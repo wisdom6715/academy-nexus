@@ -29,8 +29,9 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-white overflow-hidden relative">
-      {/* Crazy Animated Background */}
+      {/* Header component */}
       <HeaderComponent />
+      {/* Crazy Animated Background */}
       <motion.div className="fixed inset-0 pointer-events-none z-0" style={{ y: backgroundY }}>
         {/* Floating Purple Orbs */}
         <motion.div
