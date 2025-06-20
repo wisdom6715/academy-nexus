@@ -8,6 +8,7 @@ import CourseInfo from "@/app/lib/useCourseInformation"
 import HeaderComponent from "@/app/components/Header"
 import FooterSection from "@/app/components/FooterSection"
 import RegisterForm from "@/app/components/RegisterFom"
+import Image from "next/image"
 
 interface CurriculumWeek {
   week: number
@@ -94,7 +95,7 @@ export default function BootcampCoursePage() {
             😕
           </motion.div>
           <h1 className="text-3xl font-bold text-gray-700 mb-4">Bootcamp Not Found</h1>
-          <p className="text-gray-500 mb-8">The bootcamp you're looking for doesn't exist.</p>
+          <p className="text-gray-500 mb-8">The bootcamp you are looking for does not exist.</p>
           <Link href="/courses">
             <motion.button
               className="bg-gradient-to-r from-purple-600 to-purple-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-purple-800 transition-all flex items-center gap-2 mx-auto"
@@ -344,8 +345,8 @@ export default function BootcampCoursePage() {
                   }}
                   style={{ backgroundSize: "200% 200%" }}
                 />
-                <img
-                  src={course.image || "/placeholder.svg"}
+                <Image 
+                src={course.image || "/placeholder.svg"}
                   alt={course.title}
                   className="w-full h-80 object-cover"
                 />
@@ -456,7 +457,7 @@ export default function BootcampCoursePage() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.2 }}
                     >
-                      <div className="text-sm text-gray-600 font-semibold mb-2">What you'll get</div>
+                      <div className="text-sm text-gray-600 font-semibold mb-2">What you will get</div>
                       <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                         {course.features.slice(0, 3).map((feature, index) => (
                           <li key={index}>{feature}</li>

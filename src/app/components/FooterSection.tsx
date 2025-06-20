@@ -68,13 +68,13 @@ export default function FooterSection(){
                 title: "Support",
                 items: ["Help Center", "Community", "Documentation", "Status"],
               },
-            ].map((section, index) => (
+            ].map((section) => (
               <motion.div key={section.title} variants={itemVariants}>
                 <motion.h3 className="font-bold mb-4" whileHover={{ color: "#9333ea" }}>
                   {section.title}
                 </motion.h3>
                 <div className="space-y-2 text-gray-400">
-                  {section.items.map((item, itemIndex) => (
+                  {section.items.map((item) => (
                     <motion.div
                       key={item}
                       whileHover={{

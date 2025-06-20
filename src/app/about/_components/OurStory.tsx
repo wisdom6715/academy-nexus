@@ -65,15 +65,15 @@ export default function OurStory(){
                 </p>
                 <p>
                   In 2016, our founder Sarah Chen left her senior engineering role at Google to tackle the growing
-                  skills gap in tech. She witnessed firsthand how traditional education wasn't keeping pace with
+                  skills gap in tech. She witnessed firsthand how traditional education was not keeping pace with
                   industry demands, leaving talented individuals without pathways to lucrative tech careers.
                 </p>
                 <p>
                   What started as weekend coding workshops in a small San Francisco classroom has grown into a global
-                  movement, transforming over 50,000 lives and partnering with 500+ companies worldwide.
+                  movement, transforming over 200 lives and partnering with 500+ companies worldwide.
                 </p>
                 <p>
-                  <strong className="text-purple-600">Today, we're not just teaching code</strong> – we're building
+                  <strong className="text-purple-600">Today, we are not just teaching code</strong> – we are building
                   bridges to opportunity, creating diverse tech teams, and proving that with the right support, anyone
                   can master the skills that power our digital world.
                 </p>

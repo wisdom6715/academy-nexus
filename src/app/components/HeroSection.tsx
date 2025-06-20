@@ -1,9 +1,7 @@
 import { motion } from "framer-motion"
 import React from "react"
 import { ChevronRight } from "lucide-react"
-import { useState } from "react"
 export default function HeroSection(){
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -32,7 +30,6 @@ export default function HeroSection(){
             top: document.documentElement.scrollHeight,
             behavior: 'smooth'
         })
-        setIsMenuOpen(false)
     }
     return(
         <section className="relative z-10 px-6 lg:px-12 py-20 lg:py-32 overflow-hidden">
@@ -252,7 +249,7 @@ export default function HeroSection(){
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 1.7 }}
                       >
-                        console.log("Dream job unlocked! 🚀");
+                        console.log(&quot;Dream job unlocked! 🚀&quot;);
                       </motion.div>
                       <motion.div
                         className="text-blue-400"

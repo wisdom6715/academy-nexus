@@ -2,7 +2,6 @@ import { motion } from 'framer-motion'
 import { 
   Globe,
   Award,
-  TrendingUp,
   Users
  } from 'lucide-react'
 export default function AboutHero(){
@@ -58,7 +57,7 @@ export default function AboutHero(){
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              We're on a mission to democratize tech education and create pathways to high-paying careers for everyone,
+              We are on a mission to democratize tech education and create pathways to high-paying careers for everyone,
               regardless of their background or previous experience.
             </motion.p>
 

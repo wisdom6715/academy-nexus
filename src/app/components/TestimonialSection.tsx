@@ -133,7 +133,7 @@ export  default function TestimonialSection(){
                   transition={{ delay: 0.4 }}
                   viewport={{ once: true }}
                 >
-                  "{testimonial.content}"
+                  &quot;{testimonial.content}&quot;
                 </motion.p>
                 <motion.div
                   className="flex items-center gap-4"

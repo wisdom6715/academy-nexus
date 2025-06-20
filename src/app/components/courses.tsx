@@ -83,13 +83,6 @@ const CourseCards = () => {
     },
   ];
 
-  const categories = [
-    { name: "Software Development", active: true, color: "bg-purple-500" },
-    { name: "Data", active: false, color: "bg-gray-200" },
-    { name: "Clouds", active: false, color: "bg-gray-200" },
-    { name: "Design", active: false, color: "bg-gray-200" }
-  ];
-
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       {/* Category Tabs */}

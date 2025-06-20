@@ -3,8 +3,34 @@ import { motion } from 'framer-motion';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '@/app/lib/firebase.config'; // Adjust the path to your config file
 
+// Type definitions
+interface FormData {
+  name: string;
+  firstName: string;
+  phoneNumber: string;
+  email: string;
+  location: string;
+  course: string;
+  trainingProgress: string;
+}
+
+interface StudentData {
+  email: string;
+  name: string;
+  firstName: string;
+  course: string;
+  whatsappGroupLink?: string;
+}
+
+interface EmailResponse {
+  success: boolean;
+  message?: string;
+}
+
+type SubmitStatus = 'success' | 'error' | '';
+
 export default function RegisterForm() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     firstName: '',
     phoneNumber: '',
@@ -13,8 +39,8 @@ export default function RegisterForm() {
     course: '',
     trainingProgress: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(''); // 'success' or 'error'
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>(''); // 'success' or 'error'
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -54,7 +80,7 @@ export default function RegisterForm() {
     }
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>): void => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -62,7 +88,7 @@ export default function RegisterForm() {
     }));
   };
 
-  const sendWelcomeEmail = async (studentData) => {
+  const sendWelcomeEmail = async (studentData: StudentData): Promise<void> => {
     try {
       const response = await fetch('/api/send-welcome-email', {
         method: 'POST',
@@ -78,7 +104,7 @@ export default function RegisterForm() {
         }),
       });
 
-      const result = await response.json();
+      const result: EmailResponse = await response.json();
       if (result.success) {
         console.log('✅ Welcome email sent successfully');
       } else {
@@ -89,10 +115,10 @@ export default function RegisterForm() {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus('null');
+    setSubmitStatus('');
 
     try {
       // Add document to Firestore
@@ -191,7 +217,7 @@ export default function RegisterForm() {
                   transition={{ duration: 0.5 }}
                 >
                   <p className="font-semibold">Registration Successful!</p>
-                  <p>Thank you for registering. We'll be in touch soon.</p>
+                  <p>Thank you for registering. We will be in touch soon.</p>
                 </motion.div>
               )}
               

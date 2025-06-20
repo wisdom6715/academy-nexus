@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-
+import Image from 'next/image'
 export default function TeamSection(){
 
     const team = [
@@ -125,8 +125,8 @@ export default function TeamSection(){
 
                 <div className="relative z-10">
                   <motion.div className="relative mb-6" whileHover={{ scale: 1.05 }}>
-                    <img
-                      src={member.image || "/placeholder.svg"}
+                    <Image 
+                    src={member.image || "/placeholder.svg"}
                       alt={member.name}
                       className="w-24 h-24 rounded-full object-cover mx-auto border-4 border-purple-100"
                     />

@@ -280,12 +280,15 @@ export async function POST(request: Request): Promise<Response> {
       headers: { "Content-Type": "application/json" },
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error("❌ Error sending welcome email:", error);
+    
+    const errorMessage = error instanceof Error ? error.message : "An unknown error occurred";
+    
     return new Response(JSON.stringify({ 
       success: false, 
       message: "Failed to send welcome email",
-      error: error.message 
+      error: errorMessage 
     }), {
       status: 500,
       headers: { "Content-Type": "application/json" },
