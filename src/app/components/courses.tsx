@@ -40,7 +40,7 @@ const CourseCards = () => {
       level: "Career change",
       levelColor: "bg-green-600",
       image: "/images/fullstack-dev.jpeg",
-      link: 'fullstack-developement'
+      link: 'fullstack-development'
     },
 
     {
