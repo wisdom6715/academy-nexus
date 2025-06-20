@@ -1,7 +1,9 @@
 import { motion } from "framer-motion"
 import React from "react"
-import { ChevronRight, Play } from "lucide-react"
+import { ChevronRight } from "lucide-react"
+import { useState } from "react"
 export default function HeroSection(){
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -23,6 +25,14 @@ export default function HeroSection(){
             stiffness: 120,
             },
         },
+    }
+
+    const scrollToBottom = () => {
+        window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: 'smooth'
+        })
+        setIsMenuOpen(false)
     }
     return(
         <section className="relative z-10 px-6 lg:px-12 py-20 lg:py-32 overflow-hidden">
@@ -78,8 +88,9 @@ export default function HeroSection(){
 
               <motion.div className="flex flex-col sm:flex-row gap-4" variants={containerVariants}>
                 <motion.button
-                  className="border-2 border-black text-black px-8 py-4 rounded-lg font-semibold hover:bg-black hover:text-white transition-all flex items-center justify-center gap-2"
+                  className="border-2 cursor-pointer border-black text-black px-8 py-4 rounded-lg font-semibold hover:bg-black hover:text-white transition-all flex items-center justify-center gap-2"
                   variants={itemVariants}
+                  onClick={scrollToBottom}
                   whileHover={{
                     scale: 1.05,
                     boxShadow: "0 15px 35px rgba(0,0,0,0.2)",
@@ -87,21 +98,21 @@ export default function HeroSection(){
                   }}
                   whileTap={{ scale: 0.95 }}
                 >
+                  Register Now
                   <motion.div
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
                   >
-                    <Play className="w-5 h-5" />
+                    <ChevronRight className="w-5 h-5" />
                   </motion.div>
-                  Watch Demo
                 </motion.button>
               </motion.div>
 
               {/* Stats */}
               <motion.div className="flex gap-8 pt-8" variants={containerVariants}>
                 {[
-                  { number: "50K+", label: "Students" },
-                  { number: "200+", label: "Courses" },
+                  { number: "200+", label: "Students" },
+                  { number: "5+", label: "Courses" },
                   { number: "95%", label: "Success Rate" },
                 ].map((stat, index) => (
                   <motion.div key={index} variants={itemVariants} className="text-center" whileHover={{ scale: 1.1 }}>
@@ -271,6 +282,8 @@ export default function HeroSection(){
                           animate={{
                             backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
                           }}
+                          className="cursor-pointer"
+                          onClick={scrollToBottom}
                           transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
                           style={{
                             background: "linear-gradient(90deg, #fff, #e0e7ff, #fff)",

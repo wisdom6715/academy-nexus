@@ -7,9 +7,8 @@ import {
  } from 'lucide-react'
 export default function AboutHero(){
     const stats = [
-        { number: "50,000+", label: "Students Trained", icon: Users },
-        { number: "94%", label: "Job Placement Rate", icon: TrendingUp },
-        { number: "500+", label: "Partner Companies", icon: Globe },
+        { number: "200+", label: "Students Trained", icon: Users },
+        { number: "10+", label: "Partner Companies", icon: Globe },
         { number: "8", label: "Years of Excellence", icon: Award },
     ]
     return(
@@ -65,7 +64,7 @@ export default function AboutHero(){
 
             {/* Stats Grid */}
             <motion.div
-              className="grid md:grid-cols-4 gap-8 mb-16"
+              className="grid md:grid-cols-3 gap-8 mb-16 md:mx-10"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, staggerChildren: 0.1 }}

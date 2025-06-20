@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '@/app/lib/firebase.config'; // Adjust the path to your config file
 
 export default function RegisterForm() {
   const [formData, setFormData] = useState({
@@ -11,6 +13,8 @@ export default function RegisterForm() {
     course: '',
     trainingProgress: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(''); // 'success' or 'error'
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -50,7 +54,7 @@ export default function RegisterForm() {
     }
   };
 
-  const handleInputChange = (e: any) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -58,10 +62,70 @@ export default function RegisterForm() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const sendWelcomeEmail = async (studentData) => {
+    try {
+      const response = await fetch('/api/send-welcome-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: studentData.email,
+          name: studentData.name,
+          firstName: studentData.firstName,
+          course: studentData.course,
+          whatsappGroupLink: 'https://chat.whatsapp.com/your-group-link' // Replace with your actual WhatsApp group link
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        console.log('✅ Welcome email sent successfully');
+      } else {
+        console.error('❌ Failed to send welcome email:', result.message);
+      }
+    } catch (error) {
+      console.error('❌ Error sending welcome email:', error);
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission logic here
+    setIsSubmitting(true);
+    setSubmitStatus('null');
+
+    try {
+      // Add document to Firestore
+      const docRef = await addDoc(collection(db, 'student_registeration'), {
+        ...formData,
+        createdAt: serverTimestamp(),
+        updatedAt: serverTimestamp()
+      });
+
+      console.log('Document written with ID: ', docRef.id);
+      
+      // Send welcome email after successful registration
+      await sendWelcomeEmail(formData);
+      
+      setSubmitStatus('success');
+      
+      // Reset form after successful submission
+      setFormData({
+        name: '',
+        firstName: '',
+        phoneNumber: '',
+        email: '',
+        location: '',
+        course: '',
+        trainingProgress: ''
+      });
+
+    } catch (error) {
+      console.error('Error adding document: ', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -108,163 +172,207 @@ export default function RegisterForm() {
             Join thousands of developers who have transformed their careers with our comprehensive coding education
             academy.
           </motion.p>
+          
           {/* Registration Form Section */}
-            <motion.section
-                className="py-4 px-6 lg:px-12 text-black"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={formVariants}
-            >
+          <motion.section
+            className="py-4 px-6 lg:px-12 text-black"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={formVariants}
+          >
             <div className="max-w-2xl mx-auto">
-                    <motion.form
-                        onSubmit={handleSubmit}
-                        className="bg-white p-8 rounded-2xl shadow-lg space-y-6"
-                        variants={containerVariants}
-                    >
-                        {/* Name and First Name Row */}
-                        <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-6" variants={itemVariants}>
-                            <div className='flex flex-col items-start'>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Name<span className="text-red-500">*</span>
-                                </label>
-                                <input
-                                type="text"
-                                name="name"
-                                placeholder='Olayiwola'
-                                value={formData.name}
-                                onChange={handleInputChange}
-                                required
-                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all"
-                                />
-                            </div>
+              {/* Success/Error Messages */}
+              {submitStatus === 'success' && (
+                <motion.div
+                  className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <p className="font-semibold">Registration Successful!</p>
+                  <p>Thank you for registering. We'll be in touch soon.</p>
+                </motion.div>
+              )}
+              
+              {submitStatus === 'error' && (
+                <motion.div
+                  className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <p className="font-semibold">Registration Failed</p>
+                  <p>There was an error submitting your registration. Please try again.</p>
+                </motion.div>
+              )}
 
-                            <div className='flex flex-col items-start'>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
-                                First name<span className="text-red-500">*</span>
-                                </label>
-                                <input
-                                type="text"
-                                name="firstName"
-                                placeholder='Ibrahim'
-                                value={formData.firstName}
-                                onChange={handleInputChange}
-                                required
-                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all"
-                                />
-                            </div>
-                        </motion.div>
+              <motion.form
+                onSubmit={handleSubmit}
+                className="bg-white p-8 rounded-2xl shadow-lg space-y-6"
+                variants={containerVariants}
+              >
+                {/* Name and First Name Row */}
+                <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-6" variants={itemVariants}>
+                  <div className='flex flex-col items-start'>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Name<span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder='Olayiwola'
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      disabled={isSubmitting}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all disabled:bg-gray-100 disabled:cursor-not-allowed"
+                    />
+                  </div>
 
-                        {/* Phone Number */}
-                        <motion.div variants={itemVariants} className='flex flex-col items-start'>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Phone number<span className="text-red-500">*</span>
-                            </label>
-                            <input
-                                type="tel"
-                                name="phoneNumber"
-                                value={formData.phoneNumber}
-                                onChange={handleInputChange}
-                                placeholder="+234"
-                                required
-                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all"
-                            />
-                        </motion.div>
+                  <div className='flex flex-col items-start'>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      First name<span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="firstName"
+                      placeholder='Ibrahim'
+                      value={formData.firstName}
+                      onChange={handleInputChange}
+                      required
+                      disabled={isSubmitting}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all disabled:bg-gray-100 disabled:cursor-not-allowed"
+                    />
+                  </div>
+                </motion.div>
 
-                        {/* Email */}
-                        <motion.div variants={itemVariants} className='flex flex-col items-start'>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Email<span className="text-red-500">*</span>
-                            </label>
-                            <input
-                                type="email"
-                                name="email"
-                                placeholder='olayiwolaibrahim46@gmail.com'
-                                value={formData.email}
-                                onChange={handleInputChange}
-                                required
-                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all"
-                            />
-                        </motion.div>
+                {/* Phone Number */}
+                <motion.div variants={itemVariants} className='flex flex-col items-start'>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Phone number<span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="tel"
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={handleInputChange}
+                    placeholder="+234"
+                    required
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all disabled:bg-gray-100 disabled:cursor-not-allowed"
+                  />
+                </motion.div>
 
-                        {/* Location */}
-                        <motion.div variants={itemVariants} className='flex flex-col items-start'>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Location<span className="text-red-500">*</span>
-                            </label>
-                            <select
-                                name="location"
-                                value={formData.location}
-                                onChange={handleInputChange}
-                                required
-                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all bg-white"
-                            >
-                                <option value="">Please Select</option>
-                                <option value="lagos">Lagos</option>
-                                <option value="abuja">Abuja</option>
-                                <option value="port-harcourt">Port Harcourt</option>
-                                <option value="kano">Kano</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </motion.div>
+                {/* Email */}
+                <motion.div variants={itemVariants} className='flex flex-col items-start'>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Email<span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder='olayiwolaibrahim46@gmail.com'
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all disabled:bg-gray-100 disabled:cursor-not-allowed"
+                  />
+                </motion.div>
 
-                        {/* Choose your course */}
-                        <motion.div variants={itemVariants} className='flex flex-col items-start'>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Choose your course
-                            </label>
-                            <select
-                                name="course"
-                                value={formData.course}
-                                onChange={handleInputChange}
-                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all bg-white"
-                            >
-                                <option value="">Please Select</option>
-                                <option value="frontend">Frontend Development</option>
-                                <option value="backend">Backend Development</option>
-                                <option value="fullstack">Full Stack Development</option>
-                                <option value="mobile">Mobile Development</option>
-                                <option value="data-science">Data Science</option>
-                            </select>
-                        </motion.div>
+                {/* Location */}
+                <motion.div variants={itemVariants} className='flex flex-col items-start'>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Location<span className="text-red-500">*</span>
+                  </label>
+                  <select
+                    name="location"
+                    value={formData.location}
+                    onChange={handleInputChange}
+                    required
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all bg-white disabled:bg-gray-100 disabled:cursor-not-allowed"
+                  >
+                    <option value="">Please Select</option>
+                    <option value="lagos">Lagos</option>
+                    <option value="abuja">Abuja</option>
+                    <option value="port-harcourt">Port Harcourt</option>
+                    <option value="kano">Kano</option>
+                    <option value="Ibadan">Ibadan</option>
+                    <option value="other">Other</option>
+                  </select>
+                </motion.div>
 
-                        {/* Training Progress */}
-                        <motion.div variants={itemVariants} className='flex flex-col items-start'>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                How far are you in your training project?<span className="text-red-500">*</span>
-                            </label>
-                            <select
-                                name="trainingProgress"
-                                value={formData.trainingProgress}
-                                onChange={handleInputChange}
-                                required
-                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all bg-white"
-                            >
-                                <option value="">Please Select</option>
-                                <option value="beginner">Just Starting</option>
-                                <option value="intermediate">Some Experience</option>
-                                <option value="advanced">Advanced</option>
-                                <option value="professional">Professional</option>
-                            </select>
-                        </motion.div>
+                {/* Choose your course */}
+                <motion.div variants={itemVariants} className='flex flex-col items-start'>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Choose your course
+                  </label>
+                  <select
+                    name="course"
+                    value={formData.course}
+                    onChange={handleInputChange}
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all bg-white disabled:bg-gray-100 disabled:cursor-not-allowed"
+                  >
+                    <option value="">Please Select</option>
+                    <option value="data-engineering">Data Engineering</option>
+                    <option value="data-analysis">Data Analysis</option>
+                    <option value="fullstack">Full Stack Development</option>
+                    <option value="data-science">Data Science</option>
+                  </select>
+                </motion.div>
 
-                        {/* Submit Button */}
-                        <motion.div className="pt-4" variants={itemVariants}>
-                        <motion.button
-                            type="submit"
-                            className="w-full bg-purple-600 text-white py-4 px-6 rounded-lg font-semibold hover:bg-purple-700 transition-all duration-200"
-                            whileHover={{
-                            scale: 1.02,
-                            boxShadow: "0 10px 25px rgba(59, 130, 246, 0.3)",
-                            }}
-                            whileTap={{ scale: 0.98 }}
-                        >
-                            Submit
-                        </motion.button>
-                        </motion.div>
-                    </motion.form>
-                    </div>
-            </motion.section>
+                {/* Training Progress */}
+                <motion.div variants={itemVariants} className='flex flex-col items-start'>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    How far are you in your training project?<span className="text-red-500">*</span>
+                  </label>
+                  <select
+                    name="trainingProgress"
+                    value={formData.trainingProgress}
+                    onChange={handleInputChange}
+                    required
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all bg-white disabled:bg-gray-100 disabled:cursor-not-allowed"
+                  >
+                    <option value="">Please Select</option>
+                    <option value="beginner">Just Starting</option>
+                    <option value="intermediate">Some Experience</option>
+                    <option value="advanced">Advanced</option>
+                    <option value="professional">Professional</option>
+                  </select>
+                </motion.div>
+
+                {/* Submit Button */}
+                <motion.div className="pt-4" variants={itemVariants}>
+                  <motion.button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-purple-600 text-white py-4 px-6 rounded-lg font-semibold hover:bg-purple-700 transition-all duration-200 disabled:bg-purple-400 disabled:cursor-not-allowed flex items-center justify-center"
+                    whileHover={!isSubmitting ? {
+                      scale: 1.02,
+                      boxShadow: "0 10px 25px rgba(59, 130, 246, 0.3)",
+                    } : {}}
+                    whileTap={!isSubmitting ? { scale: 0.98 } : {}}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Submitting...
+                      </>
+                    ) : (
+                      'Submit Registration'
+                    )}
+                  </motion.button>
+                </motion.div>
+              </motion.form>
+            </div>
+          </motion.section>
         </motion.div>
 
         {/* Floating elements for the dark section */}

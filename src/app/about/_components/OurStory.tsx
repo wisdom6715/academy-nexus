@@ -132,10 +132,9 @@ export default function OurStory(){
                   </motion.h3>
                   <div className="space-y-4">
                     {[
-                      { label: "Average Salary Increase", value: "$45,000" },
+                      { label: "Number of students trained", value: "200+" },
                       { label: "Career Transition Success", value: "94%" },
                       { label: "Student Satisfaction", value: "4.9/5" },
-                      { label: "Global Community", value: "120+ Countries" },
                     ].map((item, index) => (
                       <motion.div
                         key={index}

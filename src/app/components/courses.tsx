@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const CourseCards = () => {
   const containerVariants = {
@@ -31,53 +32,15 @@ const CourseCards = () => {
     }
   };
 
-  const tabVariants = {
-    hidden: { opacity: 0, y: -20 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut"
-      }
-    }
-  };
-
   const courses = [
     {
       id: 1,
-      title: "Software Developer Bootcamp",
+      title: "FullStack Development",
       description: "A tailored 20-week bootcamp, perfect for tech newcomers or those with minimal programming experience who want to transform their career.",
       level: "Career change",
       levelColor: "bg-green-600",
-      image: "/images/fullstack-dev.jpeg"
-    },
-
-    {
-      id: 2,
-      title: "Introduction to Web Programming",
-      description: "A beginner-friendly training, tailored to help you build your first website with hands-on learning and expert guidance.",
-      level: "Introduction",
-      levelColor: "bg-purple-500",
-      image: "/images/backend.jpeg"
-    },
-
-    {
-      id: 3,
-      title: "Front End Developer - React JS",
-      description: "Dive into React JS mastery in our advanced course for developers with basic front-end skills.",
-      level: "Advanced",
-      levelColor: "bg-blue-600",
-      image: "/images/Frontend1.jpeg"
-    },
-    
-    {
-      id: 4,
-      title: "Backend Development Mastery",
-      description: "Master server-side development with modern frameworks and database management techniques.",
-      level: "Advanced",
-      levelColor: "bg-blue-600",
-      image: "/images/backend.jpeg"
+      image: "/images/fullstack-dev.jpeg",
+      link: 'fullstack-developement'
     },
 
     {
@@ -86,25 +49,8 @@ const CourseCards = () => {
       description: "Learn data analysis, visualization, and machine learning with hands-on projects and real-world applications.",
       level: "Advanced",
       levelColor: "bg-blue-600",
-      image: "/images/data-science.jpeg"
-    },
-
-    {
-      id: 6,
-      title: "UI/UX Design Basics",
-      description: "Start your design journey with user interface and experience design principles and practical skills.",
-      level: "Introduction",
-      levelColor: "bg-purple-500",
-      image: "/images/ux.jpeg"
-    },
-
-    {
-      id: 7,
-      title: "Effective Vibe coding",
-      description: "Build your first app effectively using code agents",
-      level: "Introduction",
-      levelColor: "bg-blue-600",
-      image: "/images/data-science.jpeg"
+      image: "/images/data-science.jpeg",
+      link: 'data-science'
     },
 
     {
@@ -113,16 +59,27 @@ const CourseCards = () => {
       description: "Build your first app effectively using code agents",
       level: "Introduction",
       levelColor: "bg-blue-600",
-      image: "/images/data-analysis.jpeg"
+      image: "/images/data-analysis.jpeg",
+      link: 'data-analysis'
     },
 
     {
       id: 9,
-      title: "LLM Engineering / AI Engineering",
-      description: "Build your first app effectively using code agents",
+      title: "Business Intelligence",
+      description: "Master the tools and techniques to transform raw data into strategic insights. Learn Excel, SQL, Power BI, and Tableau to create compelling visualizations and dashboards that drive business decisions.",
       level: "Introduction",
       levelColor: "bg-blue-600",
-      image: "/images/mobile-dev.jpeg"
+      image: "/images/business-analysis.jpeg",
+      link: 'business-intelligence'
+    },
+    {
+      id: 10,
+      title: "Data Engineering",
+      description: "Master the skills to design, build, and maintain the data infrastructure that powers modern organizations. This hands-on program covers everything from large-scale data pipelines to cloud deployment on Azure, AWS, and Microsoft Fabric, with practical experience in relational/NoSQL databases, Apache Beam, and DBT.",
+      level: "Introduction",
+      levelColor: "bg-blue-600",
+      image: "/images/data-engineering.jpeg",
+      link: 'data-engineering'
     },
   ];
 
@@ -136,45 +93,27 @@ const CourseCards = () => {
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       {/* Category Tabs */}
-      <motion.div 
-        className="flex flex-wrap gap-3 mb-8 justify-center"
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: { opacity: 0 },
-          visible: {
-            opacity: 1,
-            transition: {
-              staggerChildren: 0.1
-            }
-          }
-        }}
-      >
-        {categories.map((category, index) => (
-          <motion.button
-            key={index}
-            variants={tabVariants}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-200 ${
-              category.active
-                ? 'bg-purple-500 text-white shadow-lg'
-                : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
-            }`}
-          >
-            {category.name === "Software Development" && (
-              <span className="mr-2">💻</span>
-            )}
-            {category.name === "Data" && (
-              <span className="mr-2">📊</span>
-            )}
-            {category.name === "Design" && (
-              <span className="mr-2">🎨</span>
-            )}
-            {category.name}
-          </motion.button>
-        ))}
-      </motion.div>
+
+      <motion.h2 className=" flex flex-wrap gap-3 mb-6 justify-center text-4xl lg:text-5xl font-black text-black" whileHover={{ scale: 1.05 }}>
+        <motion.span
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          Our 
+        </motion.span>{" "}
+        <motion.span
+          className="text-purple-600"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          viewport={{ once: true }}
+        >
+          Courses
+        </motion.span>
+      </motion.h2>
+      
 
       {/* Course Cards Grid */}
       <motion.div 
@@ -213,7 +152,7 @@ const CourseCards = () => {
             </div>
 
             {/* Card Content */}
-            <div className="p-6">
+            <div className="p-6 flex flex-col justify-center">
               <motion.h3 
                 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors"
                 initial={{ opacity: 0, y: 20 }}
@@ -230,16 +169,12 @@ const CourseCards = () => {
               >
                 {course.description}
               </motion.p>
-              <motion.button 
-                className="w-full bg-black text-white py-3 px-6 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.3 }}
+              <Link 
+                className="w-full text-center bg-black text-white py-3 px-6 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200"
+                href={`courses/${course.link}`}
               >
                 Learn more
-              </motion.button>
+              </Link>
             </div>
           </motion.div>
         ))}

@@ -149,17 +149,6 @@ export default function HeaderComponent(){
                             </motion.a>
                             <motion.button
                                 onClick={scrollToBottom}
-                                className="block w-full text-left px-4 py-3 text-gray-700 hover:text-purple-600 hover:bg-white/20 rounded-lg transition-all"
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 2 * 0.1 }}
-                                whileHover={{ scale: 1.02, x: 5 }}
-                                whileTap={{ scale: 0.98 }}
-                            >
-                                Reviews
-                            </motion.button>
-                            <motion.button
-                                onClick={scrollToBottom}
                                 className="block w-full text-left px-4 py-3 bg-purple-600 text-white hover:bg-purple-700 rounded-lg transition-all mt-2"
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}

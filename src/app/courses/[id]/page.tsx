@@ -1,5 +1,4 @@
 "use client"
-
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
@@ -10,14 +9,49 @@ import HeaderComponent from "@/app/components/Header"
 import FooterSection from "@/app/components/FooterSection"
 import RegisterForm from "@/app/components/RegisterFom"
 
+interface CurriculumWeek {
+  week: number
+  title: string
+  duration: string
+  focus: string
+  topics: string[]
+  projects: string[]
+}
+
+interface Course {
+  id: string
+  title: string
+  subtitle: string
+  description: string
+  category: string
+  level: string
+  bootcampType: string
+  duration: string
+  schedule: string
+  students: number
+  nextCohort: string
+  price: number
+  originalPrice: number
+  gradient: string
+  image?: string
+  features: string[]
+  curriculum: CurriculumWeek[]
+}
+
+interface CourseData {
+  [key: string]: Course
+}
+
+
+
 export default function BootcampCoursePage() {
   const params = useParams()
   const courseId = params.id as string
   const [activeWeek, setActiveWeek] = useState(1)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const { courseData } = CourseInfo()
+  const { courseData }: { courseData: CourseData } = CourseInfo()
 
-  const course = courseData[courseId as keyof typeof courseData]
+  const course: Course | undefined = courseData[courseId]
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -391,9 +425,9 @@ export default function BootcampCoursePage() {
                           }}
                           style={{ backgroundSize: "200% 200%" }}
                         >
-                          ${course.price}
+                          ₦{course.price}
                         </motion.span>
-                        <span className="text-xl text-gray-500 line-through">${course.originalPrice}</span>
+                        <span className="text-xl text-gray-500 line-through">₦{course.originalPrice}</span>
                       </motion.div>
                       <motion.p
                         className="text-sm text-green-600 font-bold mb-2"
@@ -403,7 +437,7 @@ export default function BootcampCoursePage() {
                           repeat: Number.POSITIVE_INFINITY,
                         }}
                       >
-                        Save ${course.originalPrice - course.price}! Early Bird Special
+                        Save ₦{course.originalPrice - course.price}! Early Bird Special
                       </motion.p>
                       <p className="text-sm text-gray-600">Payment plans available</p>
                     </div>
@@ -430,74 +464,6 @@ export default function BootcampCoursePage() {
                         <li>And much more...</li>
                       </ul>
                     </motion.div>
-                  </div>
-                </motion.div>
-
-                {/* Instructor Card */}
-                <motion.div
-                  className="bg-white/90 backdrop-blur-sm border-2 border-purple-100 rounded-3xl p-6 mt-8 shadow-2xl relative overflow-hidden"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 }}
-                  whileHover={{ scale: 1.02 }}
-                >
-                  {/* Animated Background */}
-                  <motion.div
-                    className="absolute inset-0 opacity-5"
-                    animate={{
-                      background: [
-                        "linear-gradient(45deg, #7c3aed, transparent)",
-                        "linear-gradient(135deg, #8b5cf6, transparent)",
-                        "linear-gradient(225deg, #7c3aed, transparent)",
-                        "linear-gradient(315deg, #8b5cf6, transparent)",
-                      ],
-                    }}
-                    transition={{
-                      duration: 5,
-                      repeat: Number.POSITIVE_INFINITY,
-                    }}
-                  />
-
-                  <div className="relative z-10">
-                    <div className="flex items-center gap-4 mb-4">
-                      <img
-                        src={course.instructor.avatar || "/placeholder.svg"}
-                        alt={course.instructor.name}
-                        className="w-16 h-16 rounded-full object-cover"
-                      />
-                      <div>
-                        <div className="text-lg font-bold text-purple-700">{course.instructor.name}</div>
-                        <div className="text-sm text-gray-600">{course.instructor.title}</div>
-                      </div>
-                    </div>
-
-                    <p className="text-gray-700 leading-relaxed text-sm mb-4">{course.instructor.bio}</p>
-
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="text-center p-3 bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-lg">
-                        <div className="text-2xl font-black text-purple-600 mb-1">{course.instructor.courses}</div>
-                        <div className="text-sm text-gray-600 font-semibold">Courses</div>
-                      </div>
-                      <div className="text-center p-3 bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-lg">
-                        <div className="text-2xl font-black text-purple-600 mb-1">{course.instructor.experience}</div>
-                        <div className="text-sm text-gray-600 font-semibold">Experience</div>
-                      </div>
-                    </div>
-
-                    <div className="mt-4">
-                      <div className="text-sm text-gray-600 font-semibold mb-2">Worked at</div>
-                      <div className="flex items-center gap-2">
-                        {course.instructor.companies.map((company, index) => (
-                          <motion.span
-                            key={index}
-                            className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold"
-                            whileHover={{ scale: 1.1 }}
-                          >
-                            {company}
-                          </motion.span>
-                        ))}
-                      </div>
-                    </div>
                   </div>
                 </motion.div>
               </div>
@@ -599,7 +565,7 @@ export default function BootcampCoursePage() {
                     style={{ backgroundSize: "200% 200%" }}
                   />
                 )}
-                <span className="relative z-10">Week {week.week}</span>
+                <span className="relative z-10">Month {week.week}</span>
                 {activeWeek === week.week && (
                   <motion.div
                     className="absolute inset-0 opacity-30"
@@ -675,8 +641,8 @@ export default function BootcampCoursePage() {
                             <span className="text-2xl font-black text-white">{week.week}</span>
                           </motion.div>
                           <div>
-                            <div className="text-sm text-purple-600 font-bold">WEEK {week.week}</div>
-                            <div className="text-xs text-gray-500">{week.duration}</div>
+                            <div className="text-sm text-purple-600 font-bold">Month {week.week}</div>
+                            <div className="text-xs text-gray-500">{week.duration} per week</div>
                           </div>
                         </motion.div>
 
