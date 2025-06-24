@@ -12,25 +12,25 @@ export default function AboutValue(){
       {
         icon: Target,
         title: "Mission-Driven",
-        description: "Democratizing tech education and creating pathways to high-paying careers",
+        description: "Empowering African businesses with scalable cloud, security, and software solutions.",
         gradient: "from-purple-500 to-purple-600",
       },
       {
         icon: Heart,
-        title: "Student-Centric",
-        description: "Every decision we make prioritizes student success and career outcomes",
+        title: "Customer-Centric",
+        description: "Every strategy is tailored to drive client growth, efficiency, and resilience.",
         gradient: "from-purple-400 to-purple-500",
       },
       {
         icon: Zap,
         title: "Innovation First",
-        description: "Constantly evolving our curriculum to match industry demands",
+        description: "Adopting the latest in AWS, Azure, and DevOps to future-proof your systems.",
         gradient: "from-purple-600 to-purple-700",
       },
       {
         icon: Shield,
         title: "Quality Assured",
-        description: "Rigorous standards in instruction, mentorship, and career support",
+        description: "We uphold world-class standards in architecture, security, and development delivery.",
         gradient: "from-purple-300 to-purple-400",
       },
   ]

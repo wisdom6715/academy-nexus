@@ -1,5 +1,4 @@
 'use client'
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
@@ -184,21 +183,11 @@ export default function RegisterForm() {
               transition={{ delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Start Your Tech
-            </motion.span>
-            <br />
-            <motion.span
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              viewport={{ once: true }}
-            >
-              Journey Today
+              Transform with CodeSphere Nexus
             </motion.span>
           </motion.h2>
           <motion.p className="text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto" variants={itemVariants}>
-            Join thousands of developers who have transformed their careers with our comprehensive coding education
-            academy.
+            Discover how CodeSphere Nexus can enhance your business capabilities and drive digital transformation.
           </motion.p>
           
           {/* Registration Form Section */}
@@ -292,6 +281,40 @@ export default function RegisterForm() {
                   />
                 </motion.div>
 
+                {/* company name */}
+                <motion.div variants={itemVariants} className='flex flex-col items-start'>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Company Name<span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="tel"
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={handleInputChange}
+                    placeholder="CodeSphere"
+                    required
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all disabled:bg-gray-100 disabled:cursor-not-allowed"
+                  />
+                </motion.div>
+
+                {/* company Position */}
+                <motion.div variants={itemVariants} className='flex flex-col items-start'>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Company Position<span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="tel"
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={handleInputChange}
+                    placeholder="Chief Technology Officer etc"
+                    required
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all disabled:bg-gray-100 disabled:cursor-not-allowed"
+                  />
+                </motion.div>
+
                 {/* Email */}
                 <motion.div variants={itemVariants} className='flex flex-col items-start'>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -335,7 +358,7 @@ export default function RegisterForm() {
                 {/* Choose your course */}
                 <motion.div variants={itemVariants} className='flex flex-col items-start'>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Choose your course
+                    Choose our service
                   </label>
                   <select
                     name="course"
@@ -345,33 +368,31 @@ export default function RegisterForm() {
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all bg-white disabled:bg-gray-100 disabled:cursor-not-allowed"
                   >
                     <option value="">Please Select</option>
-                    <option value="data-engineering">Data Engineering</option>
-                    <option value="data-analysis">Data Analysis</option>
-                    <option value="fullstack">Full Stack Development</option>
-                    <option value="data-science">Data Science</option>
+                    <option value="software-dev">Software development</option>
+                    <option value="aws-clouds">AWS Clouds</option>
+                    <option value="microsoft-azure">Microsoft Azure</option>
+                    <option value="cybersecurity">Cybersecurity</option>
                   </select>
                 </motion.div>
 
-                {/* Training Progress */}
+                {/* additional information*/}
                 <motion.div variants={itemVariants} className='flex flex-col items-start'>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    How far are you in your training project?<span className="text-red-500">*</span>
+                    Do you have anything you would like us to know?<span className="text-red-500">*</span>
                   </label>
-                  <select
+                  <input
+                    type="text"
                     name="trainingProgress"
                     value={formData.trainingProgress}
                     onChange={handleInputChange}
+                    placeholder='enter text ...'
                     required
                     disabled={isSubmitting}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all bg-white disabled:bg-gray-100 disabled:cursor-not-allowed"
-                  >
-                    <option value="">Please Select</option>
-                    <option value="beginner">Just Starting</option>
-                    <option value="intermediate">Some Experience</option>
-                    <option value="advanced">Advanced</option>
-                    <option value="professional">Professional</option>
-                  </select>
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all disabled:bg-gray-100 disabled:cursor-not-allowed"
+                  />
+                  
                 </motion.div>
+                
 
                 {/* Submit Button */}
                 <motion.div className="pt-4" variants={itemVariants}>

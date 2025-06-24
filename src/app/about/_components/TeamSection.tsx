@@ -1,3 +1,4 @@
+'use client'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 export default function TeamSection(){
@@ -126,9 +127,11 @@ export default function TeamSection(){
                 <div className="relative z-10">
                   <motion.div className="relative mb-6" whileHover={{ scale: 1.05 }}>
                     <Image 
-                    src={member.image || "/placeholder.svg"}
+                      src={member.image || "/placeholder.svg"}
+                      width={24}
+                      height={24}
                       alt={member.name}
-                      className="w-24 h-24 rounded-full object-cover mx-auto border-4 border-purple-100"
+                      className="rounded-full object-cover mx-auto border-4 border-purple-100"
                     />
                     <motion.div
                       className={`absolute inset-0 w-24 h-24 rounded-full bg-gradient-to-r ${member.gradient} opacity-20 mx-auto`}

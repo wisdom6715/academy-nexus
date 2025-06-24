@@ -35,7 +35,7 @@ export default function FooterSection(){
       >
         <div className="max-w-7xl mx-auto">
           <motion.div
-            className="grid md:grid-cols-4 gap-8 mb-8"
+            className="grid md:grid-cols-5 gap-8 mb-8"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -50,7 +50,7 @@ export default function FooterSection(){
                 }}
                 transition={{ type: "spring", damping: 15, stiffness: 300 }}
               >
-                CodeSphere
+                CodeSphere Nexus
               </motion.div>
               <p className="text-gray-400">
                 Empowering the next generation of developers through innovative coding education.
@@ -58,8 +58,8 @@ export default function FooterSection(){
             </motion.div>
             {[
               {
-                title: "Courses",
-                items: ["Frontend Development", "Backend Engineering", "Mobile Apps", "DevOps"],
+                title: "Services",
+                items: ["AWS", "Microsoft", "Cybersecurity", "Software development"],
               },
               {
                 title: "Company",
@@ -67,7 +67,11 @@ export default function FooterSection(){
               },
               {
                 title: "Support",
-                items: ["Help Center", "Community", "Documentation", "Status"],
+                items: ["Help Center", "Community"],
+              },
+              {
+                title: "Follow us",
+                items: ["X(Twtter)", "Linkedin"],
               },
             ].map((section) => (
               <motion.div key={section.title} variants={itemVariants}>

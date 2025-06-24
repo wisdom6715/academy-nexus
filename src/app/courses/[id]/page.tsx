@@ -766,7 +766,7 @@ export default function BootcampCoursePage() {
                 </motion.div>
               ))}
           </motion.div>
-        </div>\
+        </div>
       </section>
       <RegisterForm />
       <FooterSection />
