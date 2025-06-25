@@ -119,95 +119,10 @@ export default function CareersPage() {
         "Career advancement opportunities",
       ],
     },
-    {
-      id: 8,
-      role: "Director of Cards",
-      team: "Moniepoint UK Ltd.",
-      office: "London, United Kingdom",
-      flag: "🇬🇧",
-      type: "Full-time",
-      salary: "£80,000 - £120,000",
-      posted: "3 days ago",
-      description:
-        "Lead our cards division as Director of Cards, overseeing the strategy, development, and execution of our card products across multiple markets. This is a senior leadership role requiring extensive experience in payments and card products.",
-      responsibilities: [
-        "Develop and execute comprehensive card product strategy",
-        "Lead cross-functional teams to deliver innovative card solutions",
-        "Manage relationships with card networks and payment processors",
-        "Oversee regulatory compliance and risk management",
-        "Drive revenue growth and market expansion",
-        "Mentor and develop team members",
-      ],
-      requirements: [
-        "Master's degree in Business, Finance, or related field",
-        "10+ years of experience in payments or card products",
-        "Proven leadership experience in senior management roles",
-        "Deep understanding of card networks and payment systems",
-        "Strong analytical and strategic thinking skills",
-        "Experience with international markets and regulations",
-      ],
-      benefits: [
-        "Competitive executive compensation package",
-        "Equity participation",
-        "Comprehensive health benefits",
-        "Flexible working arrangements",
-        "Professional development budget",
-        "Relocation assistance if needed",
-      ],
-    },
   ]
 
   // Add additional job listings
   const additionalJobs: Job[] = [
-    {
-      id: 3,
-      role: "Business Relationship Manager (Benue)",
-      team: "Enterprise Sales",
-      office: "Benue, Nigeria",
-      flag: "🇳🇬",
-    },
-    {
-      id: 4,
-      role: "Business Relationship Manager (Borno)",
-      team: "Enterprise Sales",
-      office: "Borno, Nigeria",
-      flag: "🇳🇬",
-    },
-    {
-      id: 5,
-      role: "Business Relationship Manager (Cross River)",
-      team: "Enterprise Sales",
-      office: "Cross River, Nigeria",
-      flag: "🇳🇬",
-    },
-    {
-      id: 6,
-      role: "Business Relationship Manager (Enugu)",
-      team: "Enterprise Sales",
-      office: "Enugu, Nigeria",
-      flag: "🇳🇬",
-    },
-    {
-      id: 7,
-      role: "Business Relationship Manager (Imo)",
-      team: "Enterprise Sales",
-      office: "Imo, Nigeria",
-      flag: "🇳🇬",
-    },
-    {
-      id: 9,
-      role: "Senior Software Engineer",
-      team: "Engineering",
-      office: "Lagos, Nigeria",
-      flag: "🇳🇬",
-    },
-    {
-      id: 10,
-      role: "Product Manager",
-      team: "Product",
-      office: "Remote, Nigeria",
-      flag: "🇳🇬",
-    },
   ]
 
   // Generate default job details for jobs without full details

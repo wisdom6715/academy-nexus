@@ -125,7 +125,7 @@ const servicesData: Record<string, ServiceData> = {
         description: "Continuous optimization and 24/7 monitoring to ensure peak performance and cost efficiency.",
       },
     ],
-    technologies: ["EC2", "S3", "RDS", "Lambda", "CloudFront", "VPC", "IAM", "CloudWatch"],
+    technologies: ["EC2", "S3", "RDS", "Lambda", "CloudFront", "VPC", "IAM", "CloudWatch", "Elasticache", "and more"],
     cta: {
       title: "Ready to Move to the Cloud?",
       description: "Let's discuss how AWS can transform your business infrastructure and drive growth.",
@@ -137,7 +137,7 @@ const servicesData: Record<string, ServiceData> = {
     subtitle: "Enterprise Cloud Solutions & Integration",
     description:
       "Leverage Microsoft Azure's comprehensive cloud platform to build, deploy, and manage applications with seamless integration to your existing Microsoft ecosystem.",
-    heroImage: "/images/azure.jpeg",
+    heroImage: "/images/microsoft.jpeg",
     icon: Layers,
     color: "purple-600",
     gradient: "from-purple-600 to-purple-800",
@@ -206,6 +206,9 @@ const servicesData: Record<string, ServiceData> = {
       "Power BI",
       "Office 365",
       "Teams",
+      "Azure Container Instances",
+      "Azure Kubernetes Service (AKS)",
+      "and more"
     ],
     cta: {
       title: "Transform with Azure",
@@ -392,6 +395,13 @@ export default function ServicePage({ params }: { params: { id: string } }) {
   if (!service) {
     notFound()
   }
+      
+  const scrollToBottom = () => {
+    window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: 'smooth'
+    })
+  }
 
   const IconComponent = service.icon
 
@@ -413,18 +423,12 @@ export default function ServicePage({ params }: { params: { id: string } }) {
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">{service.description}</p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <motion.button
+                onClick={scrollToBottom}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg font-medium transition-colors inline-flex items-center gap-2`}
+                  className={`bg-purple-600 cursor-pointer hover:bg-purple-700 text-white px-8 py-4 rounded-lg font-medium transition-colors inline-flex items-center gap-2`}
                 >
                   Get Started <ArrowRight className="w-5 h-5" />
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="border border-purple-600 text-purple-600 hover:bg-purple-50 px-8 py-4 rounded-lg font-medium transition-colors"
-                >
-                  Learn More
                 </motion.button>
               </div>
             </motion.div>

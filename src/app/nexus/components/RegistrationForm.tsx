@@ -122,8 +122,8 @@ export default function RegisterForm() {
     setSubmitStatus('');
 
     try {
-      // Add document to Firestore
-      const docRef = await addDoc(collection(db, 'student_registeration'), {
+      // Add document to Firestore - changed collection name to 'enterprise_registration'
+      const docRef = await addDoc(collection(db, 'enterprise_registration'), {
         ...formData,
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp()

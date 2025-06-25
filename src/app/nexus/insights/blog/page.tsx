@@ -38,29 +38,7 @@ export default function CodeSphereBlog() {
       author: "Sarah Johnson",
       image: "/placeholder.svg?height=400&width=600",
       readTime: "5 min read",
-    },
-    {
-      id: 2,
-      title: "Building Scalable Microservices: Lessons from Our Engineering Team",
-      excerpt:
-        "Deep dive into how we architected our microservices infrastructure to handle millions of requests while maintaining 99.9% uptime.",
-      category: "Engineering",
-      date: "December 18, 2024",
-      author: "Michael Chen",
-      image: "/placeholder.svg?height=400&width=600",
-      readTime: "8 min read",
-    },
-    {
-      id: 3,
-      title: "The Future of Remote Development: Trends and Predictions for 2025",
-      excerpt:
-        "Explore the emerging trends in remote development and how cloud-based IDEs are reshaping the software development landscape.",
-      category: "Tech Insights",
-      date: "December 15, 2024",
-      author: "Emily Rodriguez",
-      image: "/placeholder.svg?height=400&width=600",
-      readTime: "6 min read",
-    },
+    }
   ]
 
   const blogPosts = [
@@ -74,62 +52,7 @@ export default function CodeSphereBlog() {
       author: "David Kim",
       image: "/placeholder.svg?height=250&width=400",
       readTime: "4 min read",
-    },
-    {
-      id: 5,
-      title: "How We Achieved 50% Faster Build Times with Optimized CI/CD",
-      excerpt:
-        "Learn about the strategies and tools we implemented to dramatically improve our continuous integration pipeline performance.",
-      category: "Engineering",
-      date: "December 10, 2024",
-      author: "Lisa Wang",
-      image: "/placeholder.svg?height=250&width=400",
-      readTime: "7 min read",
-    },
-    {
-      id: 6,
-      title: "CodeSphere's Journey: From Startup to Industry Leader",
-      excerpt:
-        "Celebrating our 5-year milestone and reflecting on the incredible journey that brought us to where we are today.",
-      category: "Company News",
-      date: "December 8, 2024",
-      author: "Alex Thompson",
-      image: "/placeholder.svg?height=250&width=400",
-      readTime: "6 min read",
-    },
-    {
-      id: 7,
-      title: "Security Best Practices for Cloud Development Environments",
-      excerpt:
-        "Essential security measures every developer should implement when working in cloud-based development environments.",
-      category: "Tech Insights",
-      date: "December 5, 2024",
-      author: "Rachel Green",
-      image: "/placeholder.svg?height=250&width=400",
-      readTime: "9 min read",
-    },
-    {
-      id: 8,
-      title: "Maximizing Team Productivity with Real-Time Collaboration Tools",
-      excerpt:
-        "Discover how modern collaboration tools can transform your development workflow and boost team efficiency.",
-      category: "Business Tips",
-      date: "December 3, 2024",
-      author: "James Wilson",
-      image: "/placeholder.svg?height=250&width=400",
-      readTime: "5 min read",
-    },
-    {
-      id: 9,
-      title: "Behind the Scenes: Our New AI-Powered Code Assistant",
-      excerpt:
-        "Get an inside look at how we built our intelligent code assistant and the machine learning models that power it.",
-      category: "Engineering",
-      date: "December 1, 2024",
-      author: "Maria Garcia",
-      image: "/placeholder.svg?height=250&width=400",
-      readTime: "10 min read",
-    },
+    }
   ]
 
   const filteredPosts = blogPosts.filter((post) => {
