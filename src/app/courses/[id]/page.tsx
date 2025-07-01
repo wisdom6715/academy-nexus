@@ -3,21 +3,12 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { useParams } from "next/navigation"
-import { ArrowLeft, Clock, Users, Calendar, Sparkles } from "lucide-react"
+import { ArrowLeft, Calendar, Sparkles, BookOpen, TrendingUp, Star } from "lucide-react"
 import CourseInfo from "@/app/lib/useCourseInformation"
 import HeaderComponent from "@/app/components/Header"
 import FooterSection from "@/app/components/FooterSection"
 import RegisterForm from "@/app/components/RegisterFom"
 import Image from "next/image"
-
-interface CurriculumWeek {
-  week: number
-  title: string
-  duration: string
-  focus: string
-  topics: string[]
-  projects: string[]
-}
 
 interface Course {
   id: string
@@ -26,17 +17,14 @@ interface Course {
   description: string
   category: string
   level: string
-  bootcampType: string
-  duration: string
-  schedule: string
-  students: number
   nextCohort: string
   price: number
   originalPrice: number
   gradient: string
   image?: string
   features: string[]
-  curriculum: CurriculumWeek[]
+  about: string
+  outline: string[]
 }
 
 interface CourseData {
@@ -46,9 +34,9 @@ interface CourseData {
 
 
 export default function BootcampCoursePage() {
+  const [activeTab, setActiveTab] = useState("about")
   const params = useParams()
   const courseId = params.id as string
-  const [activeWeek, setActiveWeek] = useState(1)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const { courseData }: { courseData: CourseData } = CourseInfo()
 
@@ -230,12 +218,6 @@ export default function BootcampCoursePage() {
                   >
                     {course.level}
                   </motion.span>
-                  <motion.span
-                    className="px-4 py-2 bg-gradient-to-r from-green-100 to-green-200 text-green-700 rounded-full text-sm font-bold"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    {course.bootcampType}
-                  </motion.span>
                 </div>
 
                 <motion.h1
@@ -279,53 +261,6 @@ export default function BootcampCoursePage() {
                 </motion.p>
               </motion.div>
 
-              {/* Key Stats */}
-              <motion.div
-                className="grid md:grid-cols-4 gap-6"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 }}
-              >
-                {[
-                  { icon: Clock, label: "Duration", value: course.duration },
-                  { icon: Calendar, label: "Schedule", value: course.schedule },
-                  { icon: Users, label: "Students", value: course.students.toLocaleString() },
-                  { icon: Calendar, label: "Next Cohort", value: course.nextCohort },
-                ].map((stat, index) => {
-                  const IconComponent = stat.icon
-                  return (
-                    <motion.div
-                      key={index}
-                      className="text-center p-4 bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-lg"
-                      whileHover={{
-                        scale: 1.05,
-                        y: -5,
-                        boxShadow: "0 20px 40px rgba(139, 92, 246, 0.1)",
-                      }}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.9 + index * 0.1 }}
-                    >
-                      <motion.div
-                        className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mx-auto mb-3"
-                        animate={{
-                          rotate: [0, 5, -5, 0],
-                        }}
-                        transition={{
-                          duration: 4,
-                          repeat: Number.POSITIVE_INFINITY,
-                          ease: "easeInOut",
-                        }}
-                      >
-                        <IconComponent className="w-6 h-6 text-white" />
-                      </motion.div>
-                      <div className="text-2xl font-black text-purple-600 mb-1">{stat.value}</div>
-                      <div className="text-sm text-gray-600 font-semibold">{stat.label}</div>
-                    </motion.div>
-                  )
-                })}
-              </motion.div>
-
               {/* Hero Image */}
               <motion.div
                 className="relative rounded-3xl overflow-hidden shadow-2xl"
@@ -349,6 +284,7 @@ export default function BootcampCoursePage() {
                 src={course.image || "/placeholder.svg"}
                   alt={course.title}
                   className="w-full h-80 object-cover"
+                  width={300} height={200}
                 />
                 <div className="absolute inset-0 bg-black/20" />
                 <div className="absolute bottom-6 left-6 right-6">
@@ -474,300 +410,77 @@ export default function BootcampCoursePage() {
       </section>
 
       {/* Curriculum Section */}
-      <section className="px-6 lg:px-12 py-16 bg-gradient-to-br from-purple-50/50 to-white relative z-10">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <motion.h2
-              className="text-4xl lg:text-5xl font-black mb-6"
-              whileHover={{ scale: 1.02 }}
+
+      {/* Navigation Tabs */}
+      <section className="px-6 lg:px-12 py-8 relative z-10 flex flex-col md:flex-row max-w-7xl mx-auto">
+          <div className="border-gray-200">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <nav className="flex flex-col space-x-8 ">
+                {[
+                  { id: 'about', label: 'About', icon: BookOpen },
+                  { id: 'topics', label: 'Outline', icon: TrendingUp },
+                ].map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`flex items-center cursor-pointer gap-2 py-4 px-1 border-b-2 font-medium text-sm transition-colors ${
+                      activeTab === tab.id
+                        ? 'border-purple-600 text-purple-600'
+                        : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                    }`}
+                  >
+                    <tab.icon className="w-4 h-4" />
+                    {tab.label}
+                  </button>
+                ))}
+              </nav>
+            </div>
+          </div>
+
+        {/* Content Sections */}
+        <div className="max-w-2xl border rounded-md p-3 border-gray-300">
+          {activeTab === 'about' && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="prose prose-lg max-w-none"
             >
-              <motion.span
-                className="text-black"
-                animate={{
-                  textShadow: [
-                    "0 0 0px rgba(139, 92, 246, 0)",
-                    "0 0 15px rgba(139, 92, 246, 0.3)",
-                    "0 0 0px rgba(139, 92, 246, 0)",
-                  ],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Number.POSITIVE_INFINITY,
-                }}
-              >
-                8-Week Intensive
-              </motion.span>
-              <br />
-              <motion.span
-                className="bg-gradient-to-r from-purple-600 via-purple-700 to-black bg-clip-text text-transparent"
-                animate={{
-                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Number.POSITIVE_INFINITY,
-                }}
-                style={{ backgroundSize: "200% 200%" }}
-              >
-                Curriculum
-              </motion.span>
-            </motion.h2>
-            <motion.p
-              className="text-xl text-gray-600 max-w-3xl mx-auto"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              viewport={{ once: true }}
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">About the course</h2>
+              <div className="text-gray-700 leading-relaxed whitespace-pre-line">
+                {course.about}
+              </div>
+            </motion.div>
+          )}
+
+          {activeTab === 'topics' && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
             >
-              Master React through our carefully crafted weekly progression from fundamentals to advanced concepts
-            </motion.p>
-          </motion.div>
-
-          {/* Week Selector */}
-          <motion.div
-            className="flex flex-wrap justify-center gap-3 mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            {course.curriculum.map((week, index) => (
-              <motion.button
-                key={week.week}
-                onClick={() => setActiveWeek(week.week)}
-                className={`px-6 py-3 rounded-full font-bold transition-all relative overflow-hidden ${
-                  activeWeek === week.week
-                    ? "text-white shadow-2xl"
-                    : "bg-white/80 text-gray-700 hover:bg-white border border-gray-200 shadow-lg"
-                }`}
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                {activeWeek === week.week && (
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Course Outline</h2>
+              <div className="grid md:grid-cols-1 gap-4">
+                {course.outline.map((topic, index) => (
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700"
-                    animate={{
-                      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Number.POSITIVE_INFINITY,
-                    }}
-                    style={{ backgroundSize: "200% 200%" }}
-                  />
-                )}
-                <span className="relative z-10">Month {week.week}</span>
-                {activeWeek === week.week && (
-                  <motion.div
-                    className="absolute inset-0 opacity-30"
-                    animate={{
-                      boxShadow: [
-                        "0 0 20px rgba(139, 92, 246, 0.5)",
-                        "0 0 40px rgba(124, 58, 237, 0.5)",
-                        "0 0 20px rgba(139, 92, 246, 0.5)",
-                      ],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Number.POSITIVE_INFINITY,
-                    }}
-                  />
-                )}
-              </motion.button>
-            ))}
-          </motion.div>
-
-          {/* Active Week Content */}
-          <motion.div
-            key={activeWeek}
-            initial={{ opacity: 0, y: 30, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.6, type: "spring", damping: 20 }}
-            className="relative"
-          >
-            {course.curriculum
-              .filter((week) => week.week === activeWeek)
-              .map((week) => (
-                <motion.div
-                  key={week.week}
-                  className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-purple-100 relative overflow-hidden"
-                  whileHover={{ scale: 1.01 }}
-                >
-                  {/* Animated Background */}
-                  <motion.div
-                    className="absolute inset-0 opacity-5"
-                    animate={{
-                      background: [
-                        "linear-gradient(45deg, #8b5cf6, transparent)",
-                        "linear-gradient(135deg, #7c3aed, transparent)",
-                        "linear-gradient(225deg, #8b5cf6, transparent)",
-                        "linear-gradient(315deg, #7c3aed, transparent)",
-                      ],
-                    }}
-                    transition={{
-                      duration: 6,
-                      repeat: Number.POSITIVE_INFINITY,
-                    }}
-                  />
-
-                  <div className="relative z-10">
-                    <div className="grid lg:grid-cols-3 gap-8">
-                      {/* Week Header */}
-                      <div className="lg:col-span-1">
-                        <motion.div
-                          className="flex items-center gap-3 mb-4"
-                          whileHover={{ scale: 1.05 }}
-                        >
-                          <motion.div
-                            className="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center"
-                            animate={{
-                              rotate: [0, 5, -5, 0],
-                              scale: [1, 1.05, 1],
-                            }}
-                            transition={{
-                              duration: 4,
-                              repeat: Number.POSITIVE_INFINITY,
-                            }}
-                          >
-                            <span className="text-2xl font-black text-white">{week.week}</span>
-                          </motion.div>
-                          <div>
-                            <div className="text-sm text-purple-600 font-bold">Month {week.week}</div>
-                            <div className="text-xs text-gray-500">{week.duration} per week</div>
-                          </div>
-                        </motion.div>
-
-                        <motion.h3
-                          className="text-2xl font-black text-black mb-3"
-                          whileHover={{ color: "#8b5cf6" }}
-                        >
-                          {week.title}
-                        </motion.h3>
-
-                        <motion.div
-                          className="inline-block px-4 py-2 bg-gradient-to-r from-purple-100 to-purple-200 text-purple-700 rounded-full text-sm font-bold mb-4"
-                          whileHover={{ scale: 1.05 }}
-                        >
-                          {week.focus}
-                        </motion.div>
-                      </div>
-
-                      {/* Topics & Projects */}
-                      <div className="lg:col-span-2 grid md:grid-cols-2 gap-6">
-                        {/* Topics */}
-                        <motion.div
-                          className="space-y-4"
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.2 }}
-                        >
-                          <h4 className="text-lg font-bold text-gray-800 flex items-center gap-2">
-                            <motion.div
-                              className="w-3 h-3 bg-purple-600 rounded-full"
-                              animate={{ scale: [1, 1.2, 1] }}
-                              transition={{
-                                duration: 2,
-                                repeat: Number.POSITIVE_INFINITY,
-                              }}
-                            />
-                            Learning Topics
-                          </h4>
-                          <div className="space-y-3">
-                            {week.topics.map((topic, index) => (
-                              <motion.div
-                                key={index}
-                                className="flex items-start gap-3 p-3 bg-gray-50 rounded-xl hover:bg-purple-50 transition-colors"
-                                whileHover={{ x: 5, scale: 1.02 }}
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.3 + index * 0.1 }}
-                              >
-                                <motion.div
-                                  className="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"
-                                  animate={{
-                                    scale: [1, 1.3, 1],
-                                    opacity: [0.7, 1, 0.7],
-                                  }}
-                                  transition={{
-                                    duration: 2,
-                                    repeat: Number.POSITIVE_INFINITY,
-                                    delay: index * 0.2,
-                                  }}
-                                />
-                                <span className="text-gray-700 text-sm leading-relaxed">{topic}</span>
-                              </motion.div>
-                            ))}
-                          </div>
-                        </motion.div>
-
-                        {/* Projects */}
-                        <motion.div
-                          className="space-y-4"
-                          initial={{ opacity: 0, x: 20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.4 }}
-                        >
-                          <h4 className="text-lg font-bold text-gray-800 flex items-center gap-2">
-                            <motion.div
-                              className="w-3 h-3 bg-green-600 rounded-full"
-                              animate={{ scale: [1, 1.2, 1] }}
-                              transition={{
-                                duration: 2,
-                                repeat: Number.POSITIVE_INFINITY,
-                                delay: 0.5,
-                              }}
-                            />
-                            Hands-on Projects
-                          </h4>
-                          <div className="space-y-3">
-                            {week.projects.map((project, index) => (
-                              <motion.div
-                                key={index}
-                                className="p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border border-green-100 hover:border-green-200 transition-colors"
-                                whileHover={{ scale: 1.02, y: -2 }}
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.5 + index * 0.1 }}
-                              >
-                                <motion.div
-                                  className="flex items-center gap-3"
-                                  whileHover={{ x: 5 }}
-                                >
-                                  <motion.div
-                                    className="w-8 h-8 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center"
-                                    animate={{ rotate: [0, 5, -5, 0] }}
-                                    transition={{
-                                      duration: 3,
-                                      repeat: Number.POSITIVE_INFINITY,
-                                      delay: index * 0.3,
-                                    }}
-                                  >
-                                    <span className="text-white font-bold text-sm">{index + 1}</span>
-                                  </motion.div>
-                                  <span className="text-gray-800 font-semibold text-sm">{project}</span>
-                                </motion.div>
-                              </motion.div>
-                            ))}
-                          </div>
-                        </motion.div>
-                      </div>
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg hover:bg-purple-50 transition-colors"
+                  >
+                    <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-purple-600 font-semibold text-sm">{index + 1}</span>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
-          </motion.div>
+                    <span className="text-gray-800 font-medium">{topic}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )}
         </div>
       </section>
+  
       <RegisterForm />
       <FooterSection />
     </div>

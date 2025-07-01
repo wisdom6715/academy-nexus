@@ -47,7 +47,7 @@ export default function AboutHero(){
                 }}
                 style={{ backgroundSize: "200% 200%" }}
               >
-                Through Code
+                with Tech
               </motion.span>
             </motion.h1>
 

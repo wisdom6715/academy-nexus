@@ -47,10 +47,16 @@ export default function HeaderComponent(){
                 </Link>
                 <div className="hidden md:flex items-center space-x-8">
                     <Link
+                        href="/"
+                        className="text-gray-700 hover:text-purple-600 transition-colors"
+                    >
+                        Home
+                    </Link>
+                    <Link
                         href="/courses"
                         className="text-gray-700 hover:text-purple-600 transition-colors"
                     >
-                        Courses
+                        Bootcamps
                     </Link>
                     <Link
                         href="/about"
@@ -58,9 +64,15 @@ export default function HeaderComponent(){
                     >
                         About
                     </Link>
+                    <Link
+                        href="/blog"
+                        className="text-gray-700 hover:text-purple-600 transition-colors"
+                    >
+                        Blog
+                    </Link>
                     <motion.button
                         onClick={scrollToBottom}
-                        className="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition-all"
+                        className="bg-purple-600 cursor-pointer text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition-all"
                         whileHover={{
                             scale: 1.05,
                             boxShadow: "0 10px 25px rgba(147,51,234,0.4)",
@@ -76,7 +88,7 @@ export default function HeaderComponent(){
                             delay: 1,
                         }}
                     >
-                        Join the next cohort
+                        Get started
                     </motion.button>
                 </div>
 
@@ -133,7 +145,7 @@ export default function HeaderComponent(){
                                 whileTap={{ scale: 0.98 }}
                                 onClick={() => setIsMenuOpen(false)}
                             >
-                                Courses
+                                Bootcamps
                             </motion.a>
                             <motion.a
                                 href="/about"
@@ -146,6 +158,18 @@ export default function HeaderComponent(){
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 About
+                            </motion.a>
+                            <motion.a
+                                href="/blog"
+                                className="block w-full text-left px-4 py-3 text-gray-700 hover:text-purple-600 hover:bg-white/20 rounded-lg transition-all"
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 1 * 0.1 }}
+                                whileHover={{ scale: 1.02, x: 5 }}
+                                whileTap={{ scale: 0.98 }}
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                Blog
                             </motion.a>
                             <motion.button
                                 onClick={scrollToBottom}

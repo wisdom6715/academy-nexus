@@ -1,169 +1,107 @@
-import { motion } from "framer-motion"
-import { Star } from "lucide-react"
-export  default function TestimonialSection(){
-    const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
+import React from "react";
+import Image from "next/image";
+// Testimonial data separated from the component
+const testimonials = [
+  {
+    name: "Umozurike David Ejike",
+    content: "CodeSphere Academy has great potentials. The founder is doing a great job, the mode of teaching is excellent. I see within two years from now CodeSphere Academy will explode, the number of people will be massive. I want to say a big thanks to CodeSphere Academy and the team for an amazing job. Well done sir.",
+    avatar: "/images/testimonial-4.jpg",
+    bgColor: "bg-blue-500"
+  },
+  {
+    name: "Oluwadurotimi", 
+    content: "I want to say a very big thank you to Codesphere Academy and the team for amazing lectures. The instructor was incredibly patient and explained complex concepts in a clear and understandable way.  The recorded videos were very helpful too. Thank you for a valuable learning experience. Thank you for making data analysis easy 🙌🙌🙌 Looking forward to the next phase",
+    avatar: "/images/testimonial-3.jpg",
+    bgColor: "bg-green-500"
+  },
+  {
+    name: "Mughni",
+    content: "Honestly speaking This is the first time I’ve seen someone break things downs into details  And the recorded video and the assignments helps a lot too",
+    avatar: "/images/testimonial-2.jpg",
+    bgColor: "bg-purple-500"
+  },
+  {
+    name: "Richard Adesemoye",
+    content: "The class was such an insightful session. I look forward to learning more great things in the course of this boot camp",
+    avatar: "/images/testimonial-1.jpg", 
+    bgColor: "bg-pink-500"
+  },
+  {
+    name: "Ganiat Sule",
+    content: "I highly recommend Quantum Analytics to anyone looking to break into data science and analytics. The curriculum is cutting-edge, and the career support is outstanding.",
+    avatar: "/images/testimonial-4.jpg",
+    bgColor: "bg-indigo-500"
+  },
+  {
+    name: "Mildred Okunlade",
+    content: "I couldn't be happier with my experience at Quantum Analytics. The knowledge I gained here has opened doors to exciting opportunities in data science.",
+    avatar: "/images/testimonial-4.jpg",
+    bgColor: "bg-teal-500"
+  },
+  {
+    name: "Samuel Umanava", 
+    content: "I went from knowing nothing about data analytics to being able to build complex models thanks to the comprehensive training at Quantum Analytics. It was a game-changer for my career.",
+    avatar: "/images/testimonial-4.jpg",
+    bgColor: "bg-orange-500"
+  },
+  {
+    name: "Chukwujekwu Joseph",
+    content: "Quantum Analytics gave me the practical experience to feel confident in data analytics. The real-world projects were invaluable, and the mentorship was exceptional.",
+    avatar: "/images/testimonial-4.jpg",
+    bgColor: "bg-red-500"
   }
+];
 
-  const itemVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        damping: 25,
-        stiffness: 120,
-      },
-    },
-  }
-    return(
-      <motion.section
-        id="testimonials"
-        className="relative z-10 px-6 lg:px-12 py-20"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+export default function TestimonialSection() {
+  return (
+    <section className="relative bg-gray-50 py-20 px-6 lg:px-12">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className=" flex flex-wrap gap-3 mb-6 justify-center text-4xl lg:text-5xl font-black text-black">
+          <span
+            className="text-purple-600"
           >
-            <motion.h2 className="text-4xl lg:text-5xl font-black text-black mb-6" whileHover={{ scale: 1.05 }}>
-              <motion.span
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                What Our
-              </motion.span>{" "}
-              <motion.span
-                className="text-purple-600"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                viewport={{ once: true }}
-              >
-                Students Say
-              </motion.span>
-            </motion.h2>
-          </motion.div>
-
-          <motion.div
-            className="grid md:grid-cols-3 gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {[
-              {
-                name: "Sarah Chen",
-                role: "Full Stack Developer",
-                content:
-                  "CodeSphere transformed my career. The hands-on approach and real-world projects gave me the confidence to land my dream job.",
-                rating: 5,
-              },
-              {
-                name: "Marcus Johnson",
-                role: "Software Engineer",
-                content:
-                  "The interactive coding environment is incredible. I learned more in 3 months than I did in years of self-study.",
-                rating: 5,
-              },
-              {
-                name: "Elena Rodriguez",
-                role: "Frontend Developer",
-                content:
-                  "Amazing platform with excellent mentorship. The community support made all the difference in my learning journey.",
-                rating: 5,
-              },
-            ].map((testimonial, index) => (
-              <motion.div
-                key={index}
-                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300"
-                variants={itemVariants}
-                whileHover={{
-                  y: -10,
-                  scale: 1.05,
-                  boxShadow: "0 25px 50px rgba(0,0,0,0.1)",
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <motion.div
-                  className="flex items-center mb-4"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                  viewport={{ once: true }}
-                >
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, scale: 0 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.1 * i }}
-                      viewport={{ once: true }}
-                      whileHover={{
-                        scale: 1.3,
-                        rotate: 360,
-                      }}
-                    >
-                      <Star className="w-5 h-5 text-yellow-400 fill-current" />
-                    </motion.div>
-                  ))}
-                </motion.div>
-                <motion.p
-                  className="text-gray-600 leading-relaxed mb-6 italic"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                  viewport={{ once: true }}
-                >
-                  &quot;{testimonial.content}&quot;
-                </motion.p>
-                <motion.div
-                  className="flex items-center gap-4"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.6 }}
-                  viewport={{ once: true }}
-                >
-                  <motion.div
-                    className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center"
-                    whileHover={{
-                      scale: 1.2,
-                      rotate: 360,
-                      backgroundColor: "#000",
-                    }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <span className="text-white font-bold">{testimonial.name[0]}</span>
-                  </motion.div>
-                  <div>
-                    <motion.div className="font-bold text-black" whileHover={{ color: "#9333ea" }}>
-                      {testimonial.name}
-                    </motion.div>
-                    <div className="text-gray-500 text-sm">{testimonial.role}</div>
-                  </div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </motion.div>
+            Testimonials
+          </span>
+        </h2>
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            What our students say about us
+          </h2>
         </div>
-      </motion.section>
-    )
+
+        {/* Testimonials Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          {testimonials.map((testimonial, index) => (
+            <div
+              key={index}
+              className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
+            >
+              {/* User Info */}
+              <div className="flex items-center gap-3 mb-4">
+                <Image src={testimonial.avatar} alt="testimonial picture" width={100} height={100} className={`w-12 h-12 object-cover ${testimonial.bgColor} rounded-full flex items-center justify-center`} />
+                <div>
+                  <h4 className="font-semibold text-gray-900 text-sm">
+                    {testimonial.name}
+                  </h4>
+                </div>
+              </div>
+
+              {/* Testimonial Content */}
+              <p className="text-gray-600 text-sm leading-relaxed">
+                {testimonial.content}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA Button */}
+        <div className="text-center">
+          <button className="bg-purple-600 hover:bg-purple-700 cursor-pointer text-white font-semibold px-8 py-4 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl">
+            Explore Bootcamps
+          </button>
+        </div>
+      </div>
+    </section>
+  );
 }

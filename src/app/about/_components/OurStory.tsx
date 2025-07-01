@@ -60,23 +60,15 @@ export default function OurStory(){
                 viewport={{ once: true }}
               >
                 <p>
-                  <strong className="text-purple-600">CodeSphere was born from a simple belief:</strong> everyone
-                  deserves access to high-quality tech education, regardless of their background or financial situation.
+                  <strong className="text-purple-600">CodeSphere Academy is a forward-thinking technology education platform established in March 2024 </strong>
+                   with a mission to empower individuals with the skills and knowledge needed to thrive in the digital age. Founded with a vision to bridge the gap between theoretical education and practical tech expertise, CodeSphere Academy was created to provide accessible, hands-on learning in key areas such as data analysis, cloud computing, cybersecurity, software development, and other emerging tech fields.
                 </p>
                 <p>
-                  In 2016, our founder Sarah Chen left her senior engineering role at Google to tackle the growing
-                  skills gap in tech. She witnessed firsthand how traditional education was not keeping pace with
-                  industry demands, leaving talented individuals without pathways to lucrative tech careers.
+                  The academy was born from a clear recognition of the rapidly growing demand for skilled tech professionals, particularly in regions where access to quality technology education is still limited. Motivated by a passion to help aspiring tech enthusiasts progress from beginners to job-ready professionals, the academy was designed as a dynamic learning environment—focused not only on technical skills but also on nurturing creativity, critical thinking, and innovation.
                 </p>
-                <p>
-                  What started as weekend coding workshops in a small San Francisco classroom has grown into a global
-                  movement, transforming over 200 lives and partnering with 500+ companies worldwide.
-                </p>
-                <p>
-                  <strong className="text-purple-600">Today, we are not just teaching code</strong> – we are building
-                  bridges to opportunity, creating diverse tech teams, and proving that with the right support, anyone
-                  can master the skills that power our digital world.
-                </p>
+                {/* <p>
+                  At CodeSphere Academy, learning extends beyond the classroom. Through mentorship, collaborative projects, and real-world challenges, learners gain practical experience and the confidence to tackle the evolving demands of the tech industry. CodeSphere Academy is more than a school; it is a vibrant community built to develop talent, ignite curiosity, and inspire a new generation of digital leaders ready to make meaningful contributions to the world.
+                </p> */}
               </motion.div>
 
               <motion.div className="flex items-center gap-4" whileHover={{ x: 10 }}>

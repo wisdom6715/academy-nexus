@@ -7,7 +7,8 @@ import FooterSection from "../components/FooterSection"
 import BackgroundAnime from "../components/BackgroundAnime"
 import CodeEditor from "../components/CodeEditor"
 import HeroSection from "../components/HeroSection"
-
+import BootcampFeatures from "../components/Bootcamp"
+import AboutUs from '../components/AboutUs'
 
 export default function HomePage() {
   // Container variants for staggered animations
@@ -21,14 +22,14 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <HeroSection />
-
-      {/* Features Section */}
       
       {/* Learning Paths */}
       <CourseCards />
 
+      <BootcampFeatures />
+
       {/* Code Editor Showcase */}
-      <CodeEditor />
+      <AboutUs />
 
       {/* Testimonials */}
       <TestimonialSection />

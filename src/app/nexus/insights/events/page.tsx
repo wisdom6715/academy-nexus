@@ -101,7 +101,7 @@ export default function CodeSphereEvents() {
   return (
     <div className="min-h-screen bg-white text-black">
       {/* Hero Section with Curved Background */}
-      <section className="relative bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800 py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-purple-50 to-purple-100 py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Curved bottom border */}
         <div className="absolute bottom-0 left-0 w-full overflow-hidden">
           <svg
@@ -119,8 +119,8 @@ export default function CodeSphereEvents() {
         </div>
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">CodeSphere Events</h1>
-          <p className="text-xl text-purple-100 max-w-2xl mx-auto">
+          <h1 className="text-5xl md:text-6xl font-bold text-purple-700 mb-6">CodeSphere Events</h1>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Discover, learn, and connect at our exciting developer events. From conferences to workshops, 
             find your next opportunity to grow and network with the community.
           </p>

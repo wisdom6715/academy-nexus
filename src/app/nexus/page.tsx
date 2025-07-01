@@ -20,6 +20,13 @@ export default function NexusHomePage() {
     preferredDate: "", preferredTime: "", additionalInfo: ""
   })
 
+  const scrollToBottom = () => {
+        window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: 'smooth'
+        })
+    }
+
   useEffect(() => {
     const handleMouse = (e: any) => setMousePos({ x: e.clientX, y: e.clientY })
     window.addEventListener("mousemove", handleMouse)
@@ -120,9 +127,10 @@ export default function NexusHomePage() {
 
               <motion.div className="flex flex-col sm:flex-row gap-4" variants={fadeIn}>
                 <motion.button
-                  className="bg-gradient-to-r from-purple-600 to-purple-700 text-white px-8 py-4 rounded-xl font-bold shadow-2xl flex items-center justify-center gap-3"
+                  className="bg-gradient-to-r cursor-pointer from-purple-600 to-purple-700 text-white px-8 py-4 rounded-xl font-bold shadow-2xl flex items-center justify-center gap-3"
                   whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(147, 51, 234, 0.4)", y: -3 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={scrollToBottom}
                 >
                   <Rocket className="w-5 h-5" />
                   Get Started
@@ -130,7 +138,7 @@ export default function NexusHomePage() {
                 </motion.button>
 
                 <motion.button
-                  className="border-2 border-purple-600 text-purple-600 px-8 py-4 rounded-xl font-bold hover:bg-purple-600 hover:text-white transition-all flex items-center justify-center gap-3"
+                  className="border-2 cursor-pointer border-purple-600 text-purple-600 px-8 py-4 rounded-xl font-bold hover:bg-purple-600 hover:text-white transition-all flex items-center justify-center gap-3"
                   whileHover={{ scale: 1.05, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setShowDemo(true)}

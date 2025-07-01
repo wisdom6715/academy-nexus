@@ -3,40 +3,33 @@ import {
   Users,
   Target,
   Award,
-  Globe,
   Rocket,
 } from "lucide-react"
 export default function Timeline(){
 
      const milestones = [
         {
-          year: "2016",
+          year: "2024",
           title: "CodeSphere Founded",
           description: "Started with a vision to make coding education accessible to everyone",
           icon: Rocket,
         },
         {
-          year: "2018",
-          title: "First 1,000 Graduates",
+          year: "2024",
+          title: "First 100 Graduates",
           description: "Reached our first major milestone with 89% job placement rate",
           icon: Users,
         },
         {
-          year: "2020",
-          title: "Remote Learning Pioneer",
-          description: "Successfully transitioned to online learning during the pandemic",
-          icon: Globe,
-        },
-        {
-          year: "2022",
+          year: "2024",
           title: "Industry Partnerships",
           description: "Partnered with 500+ companies for direct job placements",
           icon: Target,
         },
         {
-          year: "2024",
-          title: "50K+ Success Stories",
-          description: "Celebrating over 50,000 career transformations worldwide",
+          year: "2025",
+          title: "200+ Success Stories",
+          description: "Celebrating over 200+ career transformations worldwide",
           icon: Award,
         },
       ]

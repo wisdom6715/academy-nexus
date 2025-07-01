@@ -10,7 +10,7 @@ import RegisterForm from "../components/RegisterFom"
 import FooterSection from "../components/FooterSection"
 import Timeline from "./_components/Timeline"
 import TeamSection from "./_components/TeamSection"
-import AboutValue from "./_components/AboutValue"
+import AboutValue from "../about/_components/AboutValue"
 import OurStory from "./_components/OurStory"
 import AboutHero from "./_components/AboutHero"
 

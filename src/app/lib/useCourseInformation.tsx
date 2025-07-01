@@ -6,204 +6,67 @@ export default function CourseInfo(){
       subtitle: "Master Frontend and Backend Technologies",
       category: "Software Development",
       level: "Beginner to Advanced",
-      duration: "6 months",
-      schedule: "Mon-Wed-Fri, 6:00 PM - 9:00 PM",
       nextCohort: "May 1, 2024",
       students: 11200,
       price: 3499,
       originalPrice: 4499,
-      bootcampType: "Part-time Evening",
       description: "Become a proficient full stack developer by mastering both frontend technologies like React and backend systems with Node.js. Learn to build complete web applications from database to UI with modern tools and best practices.",
       image: "/images/fullstack-dev.jpeg",
       gradient: "from-cyan-500 via-cyan-600 to-cyan-700",
-      skills: [
-        "React",
-        "Node.js",
-        "Express",
-        "SQL/NoSQL",
-        "RESTful APIs",
-        "Authentication",
-        "Cloud Deployment"
-      ],
-      prerequisites: [
-        "Basic programming knowledge",
-        "Familiarity with HTML/CSS",
-        "Logical problem-solving skills",
-        "No prior framework experience required"
-      ],
-      learningOutcomes: [
-        "Build complete full stack applications",
-        "Develop responsive frontends with React",
-        "Create robust backend services with Node.js",
-        "Design and consume RESTful APIs",
-        "Implement authentication and authorization",
-        "Deploy applications to cloud platforms",
-        "Collaborate using Git and GitHub",
-        "Optimize application performance"
-      ],
-      curriculum: [
-        {
-          week: 1,
-          title: "Web Fundamentals & Git",
-          focus: "HTML, CSS, JavaScript Basics",
-          topics: [
-            "Modern HTML5/CSS3",
-            "JavaScript ES6+",
-            "DOM manipulation",
-            "Git version control"
-          ],
-          projects: ["Personal Portfolio", "Interactive Quiz App"],
-          duration: "9 hours"
-        },
-        {
-          week: 2,
-          title: "Frontend Foundations",
-          focus: "React Fundamentals",
-          topics: [
-            "React components",
-            "Props and state",
-            "Hooks basics",
-            "Component lifecycle"
-          ],
-          projects: ["Task Manager UI", "Weather App Interface"],
-          duration: "9 hours"
-        },
-        {
-          week: 3,
-          title: "Backend Introduction",
-          focus: "Node.js & Express",
-          topics: [
-            "Server-side JavaScript",
-            "Express framework",
-            "Routing",
-            "Middleware"
-          ],
-          projects: ["Basic REST API", "Server-side Calculator"],
-          duration: "9 hours"
-        },
-        {
-          week: 4,
-          title: "Database Integration",
-          focus: "SQL & NoSQL",
-          topics: [
-            "Relational databases",
-            "MongoDB basics",
-            "ORMs/ODMs",
-            "Database design"
-          ],
-          projects: ["Bookstore API", "User Management System"],
-          duration: "9 hours"
-        },
-        {
-          week: 5,
-          title: "Advanced Frontend",
-          focus: "React Ecosystem",
-          topics: [
-            "State management",
-            "Context API",
-            "React Router",
-            "Component patterns"
-          ],
-          projects: ["E-commerce Frontend", "Dashboard UI"],
-          duration: "9 hours"
-        },
-        {
-          week: 6,
-          title: "API Development",
-          focus: "RESTful Services",
-          topics: [
-            "API design",
-            "CRUD operations",
-            "Error handling",
-            "Data validation"
-          ],
-          projects: ["Blog API", "Authentication Service"],
-          duration: "9 hours"
-        },
-        // Continue with remaining weeks...
-      ],
       features: [
         "108 hours of live instruction",
         "10 hands-on projects",
-        "Weekly 1-on-1 mentorship",
         "Career services support",
         "Lifetime access to materials",
         "Industry-standard tooling",
         "Certificate of completion"
       ],
-      careerSupport: [
-        "Technical interview preparation",
-        "Resume and portfolio reviews",
-        "Job search strategy",
-        "Networking opportunities",
-        "6 months post-graduation support"
+      about: `The Full Stack Engineering program is designed to equip you with the comprehensive skills and knowledge to build complete, end-to-end web applications. This hands-on course blends the art of creating dynamic, responsive user interfaces with the science of building secure, scalable backend systems. You’ll gain proficiency in frontend technologies like HTML, CSS, JavaScript, React, and Vue.js, as well as backend tools such as Node.js, Express.js, and database systems.
+
+Throughout the program, you’ll learn to design seamless user experiences, implement real-time features with WebSockets, and build and consume RESTful APIs. Emphasis is placed on writing clean, maintainable code, using Git and GitHub for version control, and deploying full-stack applications to leading cloud platforms. In addition to technical mastery, you’ll develop a professional portfolio website and GitHub repository to showcase your projects and attract potential employers. Whether you're starting from scratch or aiming to become a well-rounded developer, this program prepares you for real-world challenges and job opportunities in today’s fast-paced tech landscape.`,
+      outline: [
+        "Master responsive web design techniques to create websites that adapt flawlessly across all screen sizes and devices, delivering an exceptional user experience.",
+        "Create a personal portfolio website to demonstrate your skills, projects, and design aesthetic—essential for job applications and networking.",
+        "Apply best practices in coding standards, version control, and collaboration through hands-on experience with Git and GitHub, including pull requests, branching, and code reviews.",
+        "Build and maintain a professional GitHub portfolio showcasing your projects, code quality, and progression as a frontend engineer.",
+        "Learn to interact with server-side APIs through RESTful services and GraphQL, efficiently fetching and displaying data in your applications",
+        "Develop expertise in deploying frontend applications to popular hosting platforms such as Netlify, Vercel, and AWS Amplify, understanding the full deployment lifecycle.",
+        "Optimize web performance by implementing techniques to reduce load times, improve rendering speed, and enhance overall user experience.",
+        "Learn accessibility standards and SEO basics to ensure your applications are inclusive and discoverable by search engines",
+        "Prepare thoroughly for frontend engineering interviews with practical coding challenges, technical quizzes, and mock interview sessions.",
+        "Explore modern frontend tooling and workflows, including package managers (npm/yarn), module bundlers (Webpack, Vite), and CSS preprocessors (Sass, Less).",
+        "Gain proficiency in server-side development using widely adopted technologies such as Node.js and Express.js, building scalable and maintainable backend systems",
+        "Understand and implement real-time communication with WebSockets, enabling live updates, chat applications, and interactive user experiences.",
+        "Design, develop, and document RESTful and GraphQL APIs for seamless and efficient data exchange between frontend and backend services.",
+        "Deploy backend applications on cloud and hosting platforms like AWS, Azure, Heroku, and DigitalOcean, making your projects production-ready and accessible worldwide.",
+        "Master database integration and management by working with both SQL (PostgreSQL, MySQL) and NoSQL databases (MongoDB), ensuring efficient data storage, retrieval, and security.",
+        "Learn authentication and authorization techniques, including JWT, OAuth, and session management, to build secure backend systems.",
+        "Automate testing and continuous integration (CI/CD) pipelines to ensure reliable and maintainable backend code.",
+        "Prepare for backend engineering interviews by practicing common coding challenges, system design questions, and technical problem-solving techniques."
       ],
-      jobOutcomes: {
-        placementRate: 91,
-        averageSalary: 88000,
-        timeToJob: 3.1,
-        topCompanies: ["GitHub", "Netflix", "Spotify", "Airbnb", "Shopify"]
-      }
+      career: [
+        "Full-stack Developer",
+        "Frontend Developer",
+        "Backend Developer",
+        "Technical Consultant",
+        "Node.js Developer",
+        "Junior Software Engineer",
+      ]
     },
+
     "business-intelligence": {
       id: "business-intelligence",
       title: "Business Intelligence and Data Analysis",
       subtitle: "Transform Data into Actionable Business Insights",
       category: "Data Analytics",
       level: "Beginner to Intermediate",
-      duration: "5 months",
-      schedule: "Tue-Thu, 6:00 PM - 9:00 PM",
-      nextCohort: "June 3, 2024",
+      nextCohort: "May 1, 2024",
       students: 9250,
       price: 2799,
       originalPrice: 3799,
-      bootcampType: "Part-time Evening",
       description: "Master the tools and techniques to transform raw data into strategic insights. Learn Excel, SQL, Power BI, and Tableau to create compelling visualizations and dashboards that drive business decisions.",
       image: "/images/business-analysis.jpeg",
       gradient: "from-blue-500 via-blue-600 to-blue-700",
-      skills: ["Excel", "Power BI", "Tableau", "SQL", "Data Visualization", "Dashboard Design"],
-      prerequisites: [
-        "Basic computer literacy",
-        "Familiarity with spreadsheets",
-        "Analytical mindset",
-        "No prior coding experience required"
-      ],
-      learningOutcomes: [
-        "Create interactive dashboards in Power BI and Tableau",
-        "Write complex SQL queries for data analysis",
-        "Clean and transform data using Excel",
-        "Communicate insights through data storytelling",
-        "Build a professional BI portfolio"
-      ],
-      curriculum: [
-        {
-          week: 1,
-          title: "Excel for Data Analysis",
-          focus: "Spreadsheet Mastery",
-          topics: [
-            "Advanced formulas and functions",
-            "Pivot tables and charts",
-            "Data cleaning techniques",
-            "What-if analysis"
-          ],
-          projects: ["Sales Performance Dashboard", "Financial Analysis Report"],
-          duration: "9 hours"
-        },
-        {
-          week: 2,
-          title: "SQL Fundamentals",
-          focus: "Database Querying",
-          topics: [
-            "Relational database concepts",
-            "SELECT statements",
-            "Filtering and sorting",
-            "Basic joins"
-          ],
-          projects: ["Retail Database Analysis", "Employee Data Queries"],
-          duration: "9 hours"
-        },
-        // Continue with remaining weeks...
-      ],
       features: [
         "60 hours of live instruction",
         "5 real-world projects",
@@ -213,79 +76,49 @@ export default function CourseInfo(){
         "Industry-standard tools",
         "Certificate of completion"
       ],
-      careerSupport: [
-        "Resume and LinkedIn review",
-        "Portfolio building",
-        "Mock interviews",
-        "Job search strategy",
-        "3 months post-graduation support"
+      about: `The Business Intelligence and Data Analysis program is designed to equip learners with the practical skills and knowledge needed to transform data into actionable business insights. This hands-on program blends the core principles of data analysis with business intelligence strategies, empowering you to analyze trends, make informed decisions, and communicate insights effectively.
+
+Explore statistical techniques, data storytelling, and visual analytics using industry-standard tools like Excel, SQL, Power BI, Tableau, and more. You'll also gain real-world experience working with databases and dashboards, while building a professional portfolio and showcasing your work on GitHub and your personal portfolio website.
+
+Whether you're looking to start a career in data or enhance your decision-making skills in your current role, this program prepares you to become a confident, job-ready data analyst across various industries. Enroll today to harness the power of business intelligence and make data work for you.
+`,
+      outline:[
+        "Build a solid foundation in statistical principles that are critical for effective data analysis and data-driven decision-making in real-world scenarios.",
+        "Master spreadsheet tools like Microsoft Excel and Google Sheets for data cleaning, transformation, and analysis.",
+        "Craft compelling, data-driven presentations using tools such as Google Slides and Microsoft PowerPoint, enabling you to effectively communicate insights to both technical and non-technical audiences.",
+        "Develop data storytelling and visualization skills using platforms such as Tableau Public, Power BI, Google Data Studio, and spreadsheet-based charting tools.",
+        "Gain hands-on experience with relational databases by working with MySQL and PostgreSQL to understand data storage, management, and retrieval",
+        "Write and optimize SQL queries to extract, analyze, and manipulate data from databases for meaningful insights",
+        "Build and showcase your projects on GitHub, demonstrating version control practices and collaborative workflows used by professionals in the data field.",
+        "Create a personal Portfolio Website to display your projects, visualizations, and dashboards — establishing your online presence and making you job-market ready."
       ],
-      jobOutcomes: {
-        placementRate: 87,
-        averageSalary: 72000,
-        timeToJob: 3.8,
-        topCompanies: ["Deloitte", "Accenture", "IBM", "Amazon", "Microsoft"]
-      }
+      career:[
+        "Data Analyst",
+        "Business Intelligence Analyst",
+        "Reporting Analyst",
+        "Data Visualization Specialist",
+        "Operations Analyst",
+        "Market Research Analyst",
+        "Junior Data Scientist",
+        "SQL Developer",
+        "Business Analyst"
+
+      ]
     },
+
     "data-science": {
       id: "data-science",
       title: "Data Science Immersive",
       subtitle: "Master Machine Learning and Advanced Analytics",
       category: "Data Science",
       level: "Intermediate to Advanced",
-      duration: "8 months",
-      schedule: "Mon-Wed-Fri, 6:00 PM - 9:00 PM",
       nextCohort: "June 10, 2024",
       students: 6870,
       price: 3999,
       originalPrice: 4999,
-      bootcampType: "Part-time Evening",
       description: "This comprehensive program covers everything from Python programming to advanced machine learning algorithms. Gain hands-on experience with real datasets and build a portfolio of data science projects.",
       image: "/images/data-science.jpeg",
       gradient: "from-purple-500 via-purple-600 to-purple-700",
-      skills: ["Python", "Machine Learning", "TensorFlow", "Pandas", "Data Visualization", "Statistical Modeling"],
-      prerequisites: [
-        "Basic programming knowledge",
-        "College-level math",
-        "Logical problem-solving skills",
-        "Familiarity with statistics helpful but not required"
-      ],
-      learningOutcomes: [
-        "Build and evaluate machine learning models",
-        "Clean and analyze complex datasets",
-        "Create compelling data visualizations",
-        "Implement deep learning solutions",
-        "Deploy models to production"
-      ],
-      curriculum: [
-        {
-          week: 1,
-          title: "Python for Data Science",
-          focus: "Programming Fundamentals",
-          topics: [
-            "Python syntax and structures",
-            "NumPy and Pandas",
-            "Data cleaning techniques",
-            "Exploratory data analysis"
-          ],
-          projects: ["Data Cleaning Challenge", "Exploratory Analysis Report"],
-          duration: "9 hours"
-        },
-        {
-          week: 2,
-          title: "Statistical Foundations",
-          focus: "Probability and Inference",
-          topics: [
-            "Descriptive statistics",
-            "Probability distributions",
-            "Hypothesis testing",
-            "Statistical modeling"
-          ],
-          projects: ["A/B Testing Analysis", "Statistical Simulation"],
-          duration: "9 hours"
-        },
-        // Continue with remaining weeks...
-      ],
       features: [
         "96 hours of live instruction",
         "8 hands-on projects",
@@ -295,224 +128,100 @@ export default function CourseInfo(){
         "GPU cloud resources",
         "Certificate of completion"
       ],
-      careerSupport: [
-        "Technical interview prep",
-        "GitHub portfolio review",
-        "Resume workshops",
-        "Networking events",
-        "6 months post-graduation support"
+      about:`The Data Science Program is an immersive 8-month learning journey designed to take you from foundational concepts to advanced, real-world applications in the field of data science. Whether you're transitioning into tech, expanding your current skill set, or aiming to become a full-fledged data scientist, this program is structured to guide you every step of the way.
+
+Through a blend of hands-on projects, real datasets, and modern tools, you will build a strong foundation in programming, statistics, machine learning, and data visualization. You will also explore ethical issues in data usage and gain practical experience with popular libraries and frameworks such as Pandas, NumPy, Scikit-learn, TensorFlow, and Keras.
+
+In addition to core technical skills, the program emphasizes industry readiness. You will learn version control using Git and GitHub, enabling professional collaboration and code management, and you will develop a personal portfolio website to showcase your projects, analytical reports, and machine learning models—helping you stand out in job applications or freelance opportunities.
+
+By the end of this program, you won’t just know data science—you’ll have a portfolio to prove it.
+`,
+      outline: [
+        "Develop strong proficiency in data structures and algorithms to efficiently manipulate and analyze complex datasets.",
+        "Apply feature engineering techniques and understand different optimization algorithms to enhance model training and performance.",
+        "Perform data cleaning, preprocessing, and mining to uncover valuable patterns and insights from raw data.",
+        "Understand and apply key concepts such as learning rates, learning schedules, and loss functions for fine-tuning machine learning models.",
+        "Gain in-depth knowledge of essential machine learning algorithms including linear regression, logistic regression, decision trees, random forests, ensemble methods, and clustering techniques.",
+        "Create compelling data visualizations using libraries such as Matplotlib and Seaborn to effectively communicate your findings.",
+        "Build, train, and evaluate neural networks using popular deep learning frameworks such as Keras and TensorFlow.",
+        "Examine the ethical considerations and responsibilities involved in real-world data science applications.",
+        "Design and implement recommendation systems to provide personalized user experiences.",
+        "Learn version control using Git and GitHub, enabling you to collaborate on projects, track your progress, and manage your codebase professionally.",
+        "Build a professional portfolio website to showcase your projects, analyses, and visualizations to potential employers or clients."
       ],
-      jobOutcomes: {
-        placementRate: 85,
-        averageSalary: 95000,
-        timeToJob: 4.2,
-        topCompanies: ["Google", "Amazon", "Microsoft", "Tesla", "SpaceX"]
-      }
+      career:[
+        "Data Scientist",
+        "Machine Learning Engineer",
+        "Research Scientist",
+        "AI Specialist",
+        "Quantitative Analyst",
+        "Data Analyst (Advanced Level)",
+        "Business Intelligence Scientist"
+      ]
     },
-    "data-analysis": {
-      id: "data-analysis",
-      title: "Data Analysis Intensive",
+
+    "cloud-devops": {
+      id: "cloud-devops",
+      title: "Cloud and Devops",
       subtitle: "From Spreadsheets to SQL and Beyond",
-      category: "Data Analytics",
-      level: "Beginner to Intermediate",
-      duration: "4 months",
-      schedule: "Mon-Thu, 6:00 PM - 8:30 PM",
-      nextCohort: "May 27, 2024",
+      category: "cloud",
+      level: "Beginner to advance",
+      nextCohort: "May 1, 2024",
       students: 10350,
       price: 2299,
       originalPrice: 3299,
-      bootcampType: "Part-time Evening",
       description: "Learn the essential skills needed to analyze and interpret data effectively. Master Excel, SQL, and basic Python for data manipulation, visualization, and reporting across various business contexts.",
       image: "/images/data-analysis.jpeg",
       gradient: "from-green-500 via-green-600 to-green-700",
-      skills: ["Excel", "SQL", "Python", "Data Visualization", "Statistical Analysis", "Reporting"],
-      prerequisites: [
-        "Basic computer skills",
-        "High school math",
-        "No prior coding experience needed",
-        "Curiosity about data"
-      ],
-      learningOutcomes: [
-        "Clean and transform data efficiently",
-        "Write complex SQL queries",
-        "Create meaningful data visualizations",
-        "Perform statistical analysis",
-        "Present data insights effectively"
-      ],
-      curriculum: [
-        {
-          week: 1,
-          title: "Data Fundamentals",
-          focus: "Excel Mastery",
-          topics: [
-            "Spreadsheet best practices",
-            "Formulas and functions",
-            "Pivot tables",
-            "Basic charts and graphs"
-          ],
-          projects: ["Sales Analysis Dashboard", "Budget Tracker"],
-          duration: "7 hours"
-        },
-        {
-          week: 2,
-          title: "SQL Essentials",
-          focus: "Database Querying",
-          topics: [
-            "Relational database concepts",
-            "SELECT statements",
-            "Filtering and sorting",
-            "Aggregate functions"
-          ],
-          projects: ["Customer Data Analysis", "Inventory Management Queries"],
-          duration: "7 hours"
-        },
-        // Continue with remaining weeks...
-      ],
       features: [
         "56 hours of live instruction",
-        "4 practical projects",
+        "5-months program",
         "Weekly Q&A sessions",
         "Career guidance",
         "Lifetime access to materials",
         "Community Slack channel",
         "Certificate of completion"
       ],
-      careerSupport: [
-        "Resume review",
-        "LinkedIn optimization",
-        "Interview preparation",
-        "Job search tips",
-        "3 months post-graduation support"
+      about: `The Cloud & DevOps Engineering program is designed to equip learners with the essential skills to design, deploy, and manage modern cloud infrastructure using industry-leading platforms like AWS and Microsoft Azure. This hands-on course blends core cloud computing concepts with DevOps best practices to enable seamless, automated software delivery and infrastructure management.
+
+You will learn how to build scalable, secure, and highly available systems, implement Continuous Integration and Continuous Deployment (CI/CD) pipelines, and leverage containerization and orchestration tools such as Docker and Kubernetes. The program also emphasizes collaboration and version control through GitHub, empowering you to work efficiently in team environments.
+
+With a strong focus on practical experience, you’ll develop a professional portfolio and GitHub repository to showcase your projects, preparing you for in-demand roles in cloud engineering and DevOps. Whether you’re starting your career or looking to upskill, this program will prepare you to drive innovation and operational excellence in today’s cloud-first world.
+`,
+      outline:[
+        "Gain proficiency in cloud computing fundamentals and master key services in both AWS and Microsoft Azure platforms.",
+        "Learn to design, deploy, and manage scalable cloud infrastructure, including compute, storage, and networking resources, using AWS and Azure.",
+        "Understand and implement DevOps principles such as Continuous Integration (CI), Continuous Deployment (CD), and Infrastructure as Code (IaC) with tools like Jenkins, GitHub Actions, Terraform, and Azure DevOps.",
+        "Automate cloud resource provisioning and configuration to streamline development workflows and reduce manual effort.",
+        "Master containerization technologies like Docker and orchestration platforms such as Kubernetes for efficient application deployment and management.",
+        "Implement monitoring, logging, and alerting solutions to maintain application health and ensure high availability in cloud environments.",
+        "Develop skills in version control and collaboration using GitHub, enabling effective teamwork and project management.",
+        "Build, test, and deploy infrastructure and applications securely and reliably across hybrid and multi-cloud environments.",
+        "Create a professional portfolio website and GitHub repository showcasing your cloud and DevOps projects to demonstrate your job readiness.",
+        "Prepare confidently for Cloud and DevOps engineering roles with interview strategies, practical exercises, and real-world projects."
       ],
-      jobOutcomes: {
-        placementRate: 83,
-        averageSalary: 68000,
-        timeToJob: 3.5,
-        topCompanies: ["Airbnb", "Uber", "Spotify", "Netflix", "Salesforce"]
-      }
+      Career:[
+        "Cloud Engineer",
+        "DevOps Engineer",
+        "Site Reliability Engineer (SRE)",
+        "Cloud Solutions Architect",
+        "Infrastructure Engineer"
+      ]
     },
+
     "data-engineering": {
     id: "data-engineering",
     title: "Data Engineering Bootcamp",
     subtitle: "Build Scalable Data Infrastructure for Modern Organizations",
     category: "Data Engineering",
-    level: "Intermediate to Advanced",
-    duration: "5 months",
-    schedule: "Mon-Wed-Fri, 6:00 PM - 9:00 PM",
-    nextCohort: "July 8, 2024",
+    level: "Beginner",
+    nextCohort: "May 1, 2024",
     students: 7850,
     price: 3499,
     originalPrice: 4499,
-    bootcampType: "Part-time Evening",
     description: "Master the skills to design, build, and maintain the data infrastructure that powers modern organizations. This hands-on program covers everything from large-scale data pipelines to cloud deployment on Azure, AWS, and Microsoft Fabric, with practical experience in relational/NoSQL databases, Apache Beam, and DBT.",
     image: "/images/data-engineering.jpeg",
     gradient: "from-indigo-500 via-indigo-600 to-indigo-700",
-    skills: [
-      "Apache Beam",
-      "DBT",
-      "SQL/NoSQL",
-      "Azure",
-      "AWS",
-      "Data Pipelines",
-      "Data Warehousing",
-      "Microsoft Fabric"
-    ],
-    prerequisites: [
-      "Basic programming knowledge",
-      "Familiarity with databases helpful",
-      "Understanding of data concepts",
-      "No prior cloud experience required"
-    ],
-    learningOutcomes: [
-      "Design and build scalable data pipelines",
-      "Work with both relational and NoSQL databases",
-      "Implement batch and streaming data processing",
-      "Deploy solutions on Azure, AWS, and Microsoft Fabric",
-      "Use DBT for data transformation and modeling",
-      "Create professional GitHub portfolio",
-      "Build personal portfolio website"
-    ],
-    curriculum: [
-      {
-        week: 1,
-        title: "Data Infrastructure Fundamentals",
-        focus: "Core Concepts & SQL Mastery",
-        topics: [
-          "Relational database principles",
-          "Advanced SQL techniques",
-          "Database optimization",
-          "Indexing strategies"
-        ],
-        projects: ["Database Design Project", "Query Optimization Challenge"],
-        duration: "9 hours"
-      },
-      {
-        week: 2,
-        title: "NoSQL & Distributed Systems",
-        focus: "Unstructured Data Management",
-        topics: [
-          "MongoDB and document stores",
-          "Cassandra wide-column DBs",
-          "Redis key-value store",
-          "Graph databases introduction"
-        ],
-        projects: ["NoSQL Database Implementation", "Data Modeling Exercise"],
-        duration: "9 hours"
-      },
-      {
-        week: 3,
-        title: "Data Pipeline Development",
-        focus: "ETL/ELT Processes",
-        topics: [
-          "Pipeline design patterns",
-          "Data validation techniques",
-          "Error handling strategies",
-          "Workflow orchestration"
-        ],
-        projects: ["ETL Pipeline Implementation", "Data Quality Framework"],
-        duration: "9 hours"
-      },
-      {
-        week: 4,
-        title: "Batch Processing with Apache Beam",
-        focus: "Large-Scale Data Processing",
-        topics: [
-          "Beam programming model",
-          "ParDo transforms",
-          "GroupByKey operations",
-          "Windowed processing"
-        ],
-        projects: ["Batch Processing Pipeline", "Data Aggregation System"],
-        duration: "9 hours"
-      },
-      {
-        week: 5,
-        title: "Stream Processing",
-        focus: "Real-Time Data Flows",
-        topics: [
-          "Streaming concepts",
-          "Event-time processing",
-          "Watermarks and triggers",
-          "Stateful processing"
-        ],
-        projects: ["Real-Time Analytics Pipeline", "Streaming Data Dashboard"],
-        duration: "9 hours"
-      },
-      // Continuing with remaining weeks...
-      {
-        week: 20,
-        title: "Capstone Project & Deployment",
-        focus: "End-to-End Solution",
-        topics: [
-          "Cloud deployment strategies",
-          "Performance tuning",
-          "Cost optimization",
-          "Portfolio presentation"
-        ],
-        projects: ["Production-Ready Data Platform", "Portfolio Website"],
-        duration: "9 hours"
-      }
-    ],
     features: [
       "90 hours of live instruction",
       "6 hands-on projects",
@@ -522,19 +231,35 @@ export default function CourseInfo(){
       "Cloud platform credits",
       "Certificate of completion"
     ],
-    careerSupport: [
-      "Technical resume review",
-      "GitHub portfolio optimization",
-      "Mock system design interviews",
-      "Salary negotiation guidance",
-      "6 months post-graduation support"
+    about:`The Data Engineering program is designed to empower learners with the critical skills needed to design, build, and maintain the data infrastructure that powers today’s data-driven organizations. This hands-on course covers everything from managing large-scale data pipelines to deploying solutions on leading cloud platforms like Azure, AWS, and Microsoft Fabric.
+
+You will gain expertise in working with relational and NoSQL databases, orchestrating complex data workflows, and mastering tools like Apache Beam and DBT for data transformation and modeling. The program also emphasizes practical experience, helping you build a professional GitHub portfolio and a personal website to showcase your projects.
+
+Whether you aspire to become a data engineer, cloud data specialist, or work in big data analytics, this program prepares you for real-world challenges and high-demand roles in the data ecosystem. Enroll today to start building the foundation for a successful career in data engineering.`,
+    outline:[
+      "Develop expertise in handling and processing large binary objects (BLOBs) and file systems efficiently across diverse platforms.",
+      "Build and orchestrate scalable data pipelines for both batch and real-time streaming data processing, leveraging industry best practices.",
+      "Master advanced SQL querying techniques to interact with and manipulate data in relational databases effectively.",
+      "Gain proficiency in job scheduling and workflow orchestration to automate and manage complex data workflows seamlessly.",
+      "Understand the core principles of relational database systems and their applications in data engineering.",
+      "Explore Apache Beam for unified batch and streaming data processing, enabling flexible and scalable data workflows.",
+      "Work with NoSQL and object-oriented databases to efficiently manage and query unstructured and semi-structured data.",
+      "Learn to use DBT (Data Build Tool) for robust data transformation, modeling, and version control.",
+      "Design and manage data warehouses and data lakes to optimize data storage, retrieval, and analytics.",
+      "Gain hands-on experience with major cloud platforms including Microsoft Azure, Amazon Web Services (AWS), and Microsoft Fabric, learning to deploy and manage data engineering solutions in scalable cloud environments.",
+      "Build a professional GitHub portfolio to showcase your projects, code, and collaborative workflows.",
+      "Create a personal portfolio website to present your data engineering projects, demonstrating your skills and readiness to potential employers."
     ],
-    jobOutcomes: {
-      placementRate: 89,
-      averageSalary: 112000,
-      timeToJob: 3.2,
-      topCompanies: ["Netflix", "Uber", "Spotify", "Capital One", "JPMorgan"]
-    }
+    career:[
+      "Data Engineer",
+      "Cloud Data Engineer",
+      "Big Data Engineer",
+      "Data Pipeline Developer",
+      "ETL Developer",
+      "Data Warehouse Engineer",
+      "Database Administrator (DBA)",
+      "Cloud Solutions Engineer"
+    ]
   }
   };
   return{
