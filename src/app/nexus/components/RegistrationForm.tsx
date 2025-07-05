@@ -9,6 +9,8 @@ interface FormData {
   name: string;
   firstName: string;
   phoneNumber: string;
+  companyName: string;
+  companyPosition: string;
   email: string;
   location: string;
   course: string;
@@ -35,6 +37,8 @@ export default function RegisterForm() {
     name: '',
     firstName: '',
     phoneNumber: '',
+    companyName: '',
+    companyPosition: '',
     email: '',
     location: '',
     course: '',
@@ -141,6 +145,8 @@ export default function RegisterForm() {
         name: '',
         firstName: '',
         phoneNumber: '',
+        companyName: '',
+        companyPosition: '',
         email: '',
         location: '',
         course: '',
@@ -281,15 +287,15 @@ export default function RegisterForm() {
                   />
                 </motion.div>
 
-                {/* company name */}
+                {/* Company Name */}
                 <motion.div variants={itemVariants} className='flex flex-col items-start'>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Company Name<span className="text-red-500">*</span>
                   </label>
                   <input
-                    type="tel"
-                    name="phoneNumber"
-                    value={formData.phoneNumber}
+                    type="text"
+                    name="companyName"
+                    value={formData.companyName}
                     onChange={handleInputChange}
                     placeholder="CodeSphere"
                     required
@@ -298,15 +304,15 @@ export default function RegisterForm() {
                   />
                 </motion.div>
 
-                {/* company Position */}
+                {/* Company Position */}
                 <motion.div variants={itemVariants} className='flex flex-col items-start'>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Company Position<span className="text-red-500">*</span>
                   </label>
                   <input
-                    type="tel"
-                    name="phoneNumber"
-                    value={formData.phoneNumber}
+                    type="text"
+                    name="companyPosition"
+                    value={formData.companyPosition}
                     onChange={handleInputChange}
                     placeholder="Chief Technology Officer etc"
                     required
@@ -375,7 +381,7 @@ export default function RegisterForm() {
                   </select>
                 </motion.div>
 
-                {/* additional information*/}
+                {/* Additional information */}
                 <motion.div variants={itemVariants} className='flex flex-col items-start'>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Do you have anything you would like us to know?<span className="text-red-500">*</span>
@@ -390,9 +396,7 @@ export default function RegisterForm() {
                     disabled={isSubmitting}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all disabled:bg-gray-100 disabled:cursor-not-allowed"
                   />
-                  
                 </motion.div>
-                
 
                 {/* Submit Button */}
                 <motion.div className="pt-4" variants={itemVariants}>
