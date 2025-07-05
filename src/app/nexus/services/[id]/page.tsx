@@ -1,6 +1,8 @@
 "use client"
 
 import type React from "react"
+import Image from "next/image"
+import { use } from "react"
 
 import { motion } from "framer-motion"
 import { notFound } from "next/navigation"
@@ -29,14 +31,14 @@ interface ServiceData {
   subtitle: string
   description: string
   heroImage: string
-  icon: React.ComponentType<any>
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
   color: string
   gradient: string
   features: {
-    icon: React.ComponentType<any>
-    title: string
-    description: string
-  }[]
+    icon: React.FC | React.ComponentType<React.SVGProps<SVGSVGElement>>;
+    title: string;
+    description: string;
+  }[];
   benefits: {
     title: string
     description: string
@@ -389,8 +391,10 @@ const staggerContainer = {
   },
 }
 
-export default function ServicePage({ params }: { params: { id: string } }) {
-  const service = servicesData[params.id]
+export default function ServicePage({ params }: { params: Promise<{ id: string }> }) {
+  // Use the `use` hook to unwrap the Promise
+  const { id } = use(params)
+  const service = servicesData[id]
 
   if (!service) {
     notFound()
@@ -439,9 +443,11 @@ export default function ServicePage({ params }: { params: { id: string } }) {
               className="relative"
             >
               <div className="relative z-10">
-                <img
+                <Image
                   src={service.heroImage || "/placeholder.svg"}
                   alt={service.title}
+                  width={500}
+                  height={400}
                   className="w-full h-96 object-cover rounded-2xl shadow-2xl"
                 />
               </div>

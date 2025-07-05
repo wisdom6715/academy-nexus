@@ -18,7 +18,7 @@ export default function NexusHomePage() {
  
 
   useEffect(() => {
-    const handleMouse = (e: any) => setMousePos({ x: e.clientX, y: e.clientY })
+    const handleMouse = (e: MouseEvent) => setMousePos({ x: e.clientX, y: e.clientY })
     window.addEventListener("mousemove", handleMouse)
     return () => window.removeEventListener("mousemove", handleMouse)
   }, [])
@@ -148,7 +148,7 @@ export default function NexusHomePage() {
                 variants={fadeIn}
                 whileHover={{ scale: 1.05, y: -10 }}
               >
-                <p className="text-gray-700 mb-6 italic text-lg">"{test.content}"</p>
+                <p className="text-gray-700 mb-6 italic text-lg">{test.content}</p>
                 <div className="flex items-center gap-4">
                   <div className={`w-12 h-12 bg-gradient-to-r from-${test.color} to-${test.color.replace('500', '600')} rounded-full flex items-center justify-center`}>
                     <span className="text-white font-bold text-lg">{test.name[0]}</span>

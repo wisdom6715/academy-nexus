@@ -22,7 +22,7 @@ export default function NotFound() {
           <AlertCircle className="w-12 h-12 text-purple-600" />
         </motion.div>
         <h1 className="text-4xl font-bold text-gray-900 mb-4">Service Not Found</h1>
-        <p className="text-gray-600 mb-8">The service you're looking for doesn't exist or has been moved.</p>
+        <p className="text-gray-600 mb-8">The service you are looking for does not exist or has been moved.</p>
         <Link href="/services">
           <motion.button
             whileHover={{ scale: 1.05 }}

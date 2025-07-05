@@ -18,6 +18,8 @@ import {
 } from "lucide-react"
 import FooterSection from "@/app/components/FooterSection"
 import Newsletter from "@/app/nexus/components/Newsletter"
+
+import Image from "next/image"
 import HeaderComponent from "../components/Header"
 import { useRouter } from "next/navigation"
 
@@ -172,7 +174,7 @@ export default function CodeSphereBlog() {
 
               {/* Image */}
               <div className="relative h-80 lg:h-96">
-                <img
+                <Image
                   src={featuredPosts[currentFeaturedIndex].image || "/placeholder.svg"}
                   alt={featuredPosts[currentFeaturedIndex].title}
                   className="w-full h-full object-contain"
@@ -271,7 +273,7 @@ export default function CodeSphereBlog() {
                 className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow cursor-pointer group"
               >
                 <div className="relative h-48 overflow-hidden">
-                  <img
+                  <Image
                     src={post.image || "/placeholder.svg"}
                     alt={post.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"

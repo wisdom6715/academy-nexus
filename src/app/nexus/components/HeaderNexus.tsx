@@ -1,16 +1,12 @@
 'use client'
 import Link from "next/link"
 import Image from "next/image"
-import { useState } from "react"
 export default function HeaderNexus(){
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
-    
         const scrollToBottom = () => {
             window.scrollTo({
                 top: document.documentElement.scrollHeight,
                 behavior: 'smooth'
             })
-            setIsMenuOpen(false)
         }
     return(
         <nav className="fixed left-0 right-0 z-50 p-6 lg:px-96">

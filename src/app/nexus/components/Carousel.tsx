@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Award, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Award } from 'lucide-react';
+import Image from 'next/image';
 
 const SlidingImagesComponent = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -32,7 +33,7 @@ const SlidingImagesComponent = () => {
     <div className="relative opacity-100 scale-100 transition-all duration-500 delay-800">
       <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-purple-100 hover:scale-105 transition-transform duration-300">
         <h3 className="text-2xl font-black text-purple-600 mb-6">Certified Technology Partners</h3>
-        <p className="text-gray-700 mb-8">We're certified by leading technology platforms, ensuring enterprise-grade solutions.</p>
+        <p className="text-gray-700 mb-8">We are certified by leading technology platforms, ensuring enterprise-grade solutions.</p>
         
         {/* Image Carousel Container */}
         <div className="relative mb-8 overflow-hidden rounded-2xl bg-gradient-to-r from-purple-50 to-blue-50">
@@ -49,7 +50,7 @@ const SlidingImagesComponent = () => {
                     : 'opacity-0 translate-x-full'
                 }`}
               >
-                <img
+                <Image
                   src={image}
                   alt={`Partnership ${index + 1}`}
                   className="w-full h-full object-none rounded-xl"

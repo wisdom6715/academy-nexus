@@ -1,6 +1,7 @@
 "use client"
 
 import type React from "react"
+import Image from "next/image"
 
 import { useState } from "react"
 import {
@@ -181,7 +182,7 @@ export default function CodeSphereEvents() {
 
               {/* Image */}
               <div className="relative h-80 lg:h-96">
-                <img
+                <Image
                   src={featuredEvents[currentFeaturedIndex].image || "/placeholder.svg"}
                   alt={featuredEvents[currentFeaturedIndex].title}
                   className="w-full h-full object-cover"
@@ -232,7 +233,7 @@ export default function CodeSphereEvents() {
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-12">
             <div>
               <h2 className="text-4xl font-bold text-gray-900 mb-4">Upcoming Events</h2>
-              <p className="text-xl text-gray-600">Don't miss out on these amazing opportunities to learn and connect.</p>
+              <p className="text-xl text-gray-600">Do not miss out on these amazing opportunities to learn and connect.</p>
             </div>
             <div className="mt-6 lg:mt-0">
               <div className="flex gap-4">
@@ -279,7 +280,7 @@ export default function CodeSphereEvents() {
                 className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow cursor-pointer group"
               >
                 <div className="relative h-48 overflow-hidden">
-                  <img
+                  <Image
                     src={event.image || "/placeholder.svg"}
                     alt={event.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"

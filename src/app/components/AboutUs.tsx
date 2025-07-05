@@ -92,7 +92,7 @@ const QuantumAnalyticsAbout: React.FC = () => {
                 At CodeSpher Academy, we empower you to become a global talent by providing 
                 exceptional training crafted by industry experts. Through a hands-on, experiential 
                 learning model and internship opportunities, we ensure you gain the expertise 
-                needed to thrive in today's workforce.
+                needed to thrive in today workforce.
               </p>
             </motion.div>
 

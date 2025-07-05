@@ -11,9 +11,6 @@ import {
   FileText,
   Crown,
   X,
-  Calendar,
-  DollarSign,
-  Clock,
   Building,
 } from "lucide-react"
 import FooterSection from "@/app/nexus/components/FooterComponent"
@@ -305,7 +302,7 @@ export default function CareersPage() {
             Ready to live your <span className="text-purple-600">dream</span>?
           </h1>
           <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
-            Come join a team that's redefining tech education for millions of people in emerging markets and building innovative software solutions.
+            Come join a team thats redefining tech education for millions of people in emerging markets and building innovative software solutions.
           </p>
         </div>
       </section>
@@ -427,7 +424,7 @@ export default function CareersPage() {
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Our Interview Process</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Here's what you can expect during our hiring process
+              Here is what you can expect during our hiring process
             </p>
           </div>
 

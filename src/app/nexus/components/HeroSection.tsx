@@ -1,7 +1,6 @@
 import { motion } from "framer-motion"
 import { Users, Award, TrendingUp, ArrowRight, Rocket,
 } from "lucide-react"
-import Image from "next/image"
 import SlidingImagesComponent from "./Carousel"
 
 export default function HeroSection(){

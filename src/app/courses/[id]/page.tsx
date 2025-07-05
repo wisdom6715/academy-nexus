@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { useParams } from "next/navigation"
-import { ArrowLeft, Calendar, Dot, Sparkles, BookOpen, TrendingUp, Star } from "lucide-react"
+import { ArrowLeft, Calendar, Dot, Sparkles, BookOpen, TrendingUp } from "lucide-react"
 import CourseInfo from "@/app/lib/useCourseInformation"
 import HeaderComponent from "@/app/components/Header"
 import FooterSection from "@/app/components/FooterSection"
@@ -454,7 +454,7 @@ export default function BootcampCoursePage() {
 
               <h2 className="text-3xl font-bold text-gray-900 mt-8 mb-3">Career Outcome</h2>
               <div className="text-gray-700 leading-relaxed whitespace-pre-line">{course.career.map((career, index) => (
-                <div className="flex flex-row items-center">
+                <div className="flex flex-row items-center" key={index}>
                   <Dot size={24}/>
                   <p key={index}>{career}</p>
                 </div>

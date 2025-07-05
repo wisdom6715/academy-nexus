@@ -5,7 +5,6 @@ import HeaderComponent from "../components/Header"
 import TestimonialSection from "../components/TestimonialSection"
 import FooterSection from "../components/FooterSection"
 import BackgroundAnime from "../components/BackgroundAnime"
-import CodeEditor from "../components/CodeEditor"
 import HeroSection from "../components/HeroSection"
 import BootcampFeatures from "../components/Bootcamp"
 import AboutUs from '../components/AboutUs'
