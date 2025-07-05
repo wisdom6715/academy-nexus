@@ -177,6 +177,7 @@ export default function CodeSphereBlog() {
                 <Image
                   src={featuredPosts[currentFeaturedIndex].image || "/placeholder.svg"}
                   alt={featuredPosts[currentFeaturedIndex].title}
+                  width={300} height={300}
                   className="w-full h-full object-contain"
                 />
                 <div className="absolute inset-0 bg-gradient-to-l from-transparent to-purple-600 lg:hidden"></div>
@@ -276,6 +277,7 @@ export default function CodeSphereBlog() {
                   <Image
                     src={post.image || "/placeholder.svg"}
                     alt={post.title}
+                    width={300} height={300}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute top-4 left-4">

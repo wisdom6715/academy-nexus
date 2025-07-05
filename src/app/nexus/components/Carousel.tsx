@@ -51,6 +51,7 @@ const SlidingImagesComponent = () => {
                 }`}
               >
                 <Image
+                  width={300} height={300}
                   src={image}
                   alt={`Partnership ${index + 1}`}
                   className="w-full h-full object-none rounded-xl"
