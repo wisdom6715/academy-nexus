@@ -173,7 +173,7 @@ export default function NexusHomePage() {
             </h2>
           </motion.div>
 
-          <motion.div className="grid grid-cols-3 md:grid-cols-6 gap-8" variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+          <motion.div className="grid grid-cols-2  md:grid-cols-4 gap-8" variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             {companies.map((company, i) => (
               <motion.div
                 key={i}
