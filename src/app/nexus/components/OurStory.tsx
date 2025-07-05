@@ -60,23 +60,9 @@ export default function OurStory(){
                 viewport={{ once: true }}
               >
                 <p>
-                  <strong className="text-purple-600">CodeSphere was born from a simple belief:</strong> everyone
-                  deserves access to high-quality tech education, regardless of their background or financial situation.
+                  <strong className="text-purple-600">The story of CodeSphere Nexus Ltd began with a clear mission: </strong>to help businesses harness the full power of modern technology and thrive in a fast-changing digital world. Founded in 2024 alongside CodeSphere Academy, CodeSphere Nexus Ltd was created to bridge the gap between bold ideas and practical, scalable tech solutions that drive real business results.
                 </p>
-                <p>
-                  In 2016, our founder Sarah Chen left her senior engineering role at Google to tackle the growing
-                  skills gap in tech. She witnessed firsthand how traditional education was not keeping pace with
-                  industry demands, leaving talented individuals without pathways to lucrative tech careers.
-                </p>
-                <p>
-                  What started as weekend coding workshops in a small San Francisco classroom has grown into a global
-                  movement, transforming over 200 lives and partnering with 500+ companies worldwide.
-                </p>
-                <p>
-                  <strong className="text-purple-600">Today, we are not just teaching code</strong> – we are building
-                  bridges to opportunity, creating diverse tech teams, and proving that with the right support, anyone
-                  can master the skills that power our digital world.
-                </p>
+                <p>Our journey started with a simple understanding—many organizations, especially across Africa, face complex challenges when trying to adopt and integrate advanced technologies like cloud computing, data engineering, and automation. We saw an opportunity to partner with these businesses, not just as service providers, but as trusted advisors ready to guide them through digital transformation with solutions tailored to their unique goals. From our first projects, we focused on delivering high-impact services in software development, cloud architecture, data analytics, and DevOps. Along the way, we built a reputation for combining deep technical expertise with a practical, business-first approach. This has allowed us to help startups, growing enterprises, and established organizations unlock efficiency, scale securely, and compete confidently in the global market.</p>
               </motion.div>
 
               <motion.div className="flex items-center gap-4" whileHover={{ x: 10 }}>
@@ -132,9 +118,9 @@ export default function OurStory(){
                   </motion.h3>
                   <div className="space-y-4">
                     {[
-                      { label: "Number of students trained", value: "200+" },
-                      { label: "Career Transition Success", value: "94%" },
-                      { label: "Student Satisfaction", value: "4.9/5" },
+                      { label: "Number of project delivered", value: "50+" },
+                      { label: "Partner companies", value: "10+" },
+                      { label: "Client satisfaction", value: "4.9/5" },
                     ].map((item, index) => (
                       <motion.div
                         key={index}

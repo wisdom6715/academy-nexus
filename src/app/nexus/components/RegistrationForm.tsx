@@ -101,7 +101,7 @@ export default function RegisterForm() {
           name: studentData.name,
           firstName: studentData.firstName,
           course: studentData.course,
-          whatsappGroupLink: 'https://chat.whatsapp.com/your-group-link' // Replace with your actual WhatsApp group link
+          whatsappGroupLink: 'https://chat.whatsapp.com/your-group-link'
         }),
       });
 

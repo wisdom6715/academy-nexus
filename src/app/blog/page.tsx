@@ -19,40 +19,81 @@ import {
 import FooterSection from "@/app/components/FooterSection"
 import Newsletter from "@/app/nexus/components/Newsletter"
 import HeaderComponent from "../components/Header"
+import { useRouter } from "next/navigation"
 
 export default function CodeSphereBlog() {
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("All")
   const [currentFeaturedIndex, setCurrentFeaturedIndex] = useState(0)
+  const route = useRouter()
 
   const categories = ["All", "Product Updates", "Engineering", "Business Tips", "Tech Insights", "Company News"]
 
   const featuredPosts = [
     {
       id: 1,
-      title: "Introducing CodeSphere 3.0: Revolutionary Cloud Development Platform",
+      title: "Using Excel for Employee Health and Safety Compliance Tracking",
       excerpt:
-        "Experience the future of cloud development with our latest platform update featuring AI-powered code completion and real-time collaboration.",
+        "Akingbaso’s Data Chronicles is a blog exploring data analytics, visualization, storytelling, and AI using Excel, SQL, Power BI, ChatGPT, and more. Follow for insights! 🔍📈",
       category: "Product Updates",
       date: "December 20, 2024",
       author: "Sarah Johnson",
-      image: "/placeholder.svg?height=400&width=600",
+      image: "/images/blog1.jpg",
       readTime: "5 min read",
-    }
+      link: "https://hashnode.com/67d5e3da22198e7b8890b741/dashboard "
+    },
+    {
+      id: 3,
+      title: "10 Essential Excel Shortcuts to Boost Your Productivity",
+      excerpt:
+        "This blog is a practical guide that introduces you to 10 powerful Excel shortcuts that can help you work smarter, faster, and with more ease. Whether you're a beginner or someone who wants to  sharpen your Excel skills, these shortcuts are essential for boosting your productivity. Each shortcut is clearly explained with easy-to-follow steps so you can start using them right away!",
+      category: "Tech Insights",
+      date: "December 12, 2024",
+      author: "Fashina Rukayat",
+      image: "/images/blog3.jpg",
+      readTime: "4 min read",
+      link: " https://claritybyrukayat.hashnode.dev/10-essential-excel-shortcuts-to-boost-your-productivity "
+    },
   ]
 
   const blogPosts = [
     {
-      id: 4,
-      title: "10 Essential VS Code Extensions for Modern Developers",
+      id: 2,
+      title: "The Importance of Excel in Budget Planning and Expense Tracking",
       excerpt:
-        "Boost your productivity with these carefully selected VS Code extensions that every developer should know about.",
+        "Budgeting and expense tracking are essential for both individuals and businesses to maintain financial stability and achieve long-term goals. Excel has remained a powerful tool in this field, offering features that simplify calculations, automate processes, and provide visual insights. Whether managing household expenses or overseeing business finances, Excel is a highly useful and essential tool.",
       category: "Tech Insights",
       date: "December 12, 2024",
-      author: "David Kim",
-      image: "/placeholder.svg?height=250&width=400",
+      author: "Oyegue Praise",
+      image: "/images/blog4.jpg",
       readTime: "4 min read",
-    }
+      link: "https://praise-oyegue.hashnode.dev/the-importance-of-excel-in-budget-planning-and-expense-tracking"
+    },
+    {
+      id: 3,
+      title: "10 Essential Excel Shortcuts to Boost Your Productivity",
+      excerpt:
+        "This blog is a practical guide that introduces you to 10 powerful Excel shortcuts that can help you work smarter, faster, and with more ease. Whether you're a beginner or someone who wants to  sharpen your Excel skills, these shortcuts are essential for boosting your productivity. Each shortcut is clearly explained with easy-to-follow steps so you can start using them right away!",
+      category: "Tech Insights",
+      date: "December 12, 2024",
+      author: "Fashina Rukayat",
+      image: "/images/blog3.jpg",
+      readTime: "4 min read",
+      link: " https://claritybyrukayat.hashnode.dev/10-essential-excel-shortcuts-to-boost-your-productivity "
+    },
+    {
+      id: 4,
+      title: "The Role of Excel in Patient Health Tracking and Control.",
+      excerpt:
+        "In today's fast-evolving healthcare landscape, efficient patient health tracking is essential for improving care, monitoring progress, and preventing complications. Excel, a widely accessible and versatile tool, plays a significant role in simplifying this process. From organizing patient records to tracking vital signs, medication schedules, and follow-up appointments, Excel empowers healthcare professionals and caregivers to maintain accurate, up-to-date data. This blog explores how Excel can be effectively used to support patient health tracking and control, ultimately enhancing decision-making and contributing to better health outcomes.",
+      category: "Tech Insights",
+      date: "December 12, 2024",
+      author: "Okezie Promise",
+      image: "/images/blog2.jpg",
+      readTime: "4 min read",
+      link: "https://promise961.hashnode.dev/"
+    },
+    
   ]
 
   const filteredPosts = blogPosts.filter((post) => {
@@ -91,6 +132,7 @@ export default function CodeSphereBlog() {
       <HeaderComponent />
       <section className="bg-gradient-to-br from-purple-50 to-purple-100 py-28 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-block bg-purple-200 text-purple-700 px-4 py-2 rounded-full text-sm font-medium mb-8">Our Blog</div>
           <h1 className="text-5xl md:text-6xl font-bold text-purple-700 mb-6">CodeSphere Blog</h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Get behind the scenes on our process, exciting news, and the people making dreams come true for millions of
@@ -123,7 +165,7 @@ export default function CodeSphereBlog() {
                   <span>•</span>
                   <span>{featuredPosts[currentFeaturedIndex].readTime}</span>
                 </div>
-                <button className="bg-white text-purple-600 hover:bg-purple-50 px-6 py-3 rounded-lg font-medium transition-colors inline-flex items-center gap-2">
+                <button onClick={()=> route.push(featuredPosts[currentFeaturedIndex].link)} className="cursor-pointer bg-white text-purple-600 hover:bg-purple-50 px-6 py-3 rounded-lg font-medium transition-colors inline-flex items-center gap-2">
                   Read Article <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
@@ -133,7 +175,7 @@ export default function CodeSphereBlog() {
                 <img
                   src={featuredPosts[currentFeaturedIndex].image || "/placeholder.svg"}
                   alt={featuredPosts[currentFeaturedIndex].title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
                 <div className="absolute inset-0 bg-gradient-to-l from-transparent to-purple-600 lg:hidden"></div>
               </div>
@@ -225,6 +267,7 @@ export default function CodeSphereBlog() {
             {filteredPosts.map((post) => (
               <article
                 key={post.id}
+                onClick={()=> route.push(post.link)}
                 className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow cursor-pointer group"
               >
                 <div className="relative h-48 overflow-hidden">

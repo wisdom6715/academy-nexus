@@ -3,43 +3,36 @@ import {
   Users,
   Target,
   Award,
-  Globe,
   Rocket,
 } from "lucide-react"
 export default function Timeline(){
 
      const milestones = [
-        {
-          year: "2016",
-          title: "CodeSphere Founded",
-          description: "Started with a vision to make coding education accessible to everyone",
-          icon: Rocket,
-        },
-        {
-          year: "2018",
-          title: "First 1,000 Graduates",
-          description: "Reached our first major milestone with 89% job placement rate",
-          icon: Users,
-        },
-        {
-          year: "2020",
-          title: "Remote Learning Pioneer",
-          description: "Successfully transitioned to online learning during the pandemic",
-          icon: Globe,
-        },
-        {
-          year: "2022",
-          title: "Industry Partnerships",
-          description: "Partnered with 500+ companies for direct job placements",
-          icon: Target,
-        },
-        {
-          year: "2024",
-          title: "50K+ Success Stories",
-          description: "Celebrating over 50,000 career transformations worldwide",
-          icon: Award,
-        },
-      ]
+      {
+        year: "2024",
+        title: "Company Launched",
+        description: "Founded with a mission to help businesses scale through modern technology solutions",
+        icon: Rocket,
+      },
+      {
+        year: "2024",
+        title: "First 100 Clients Served",
+        description: "Delivered impactful solutions with a 90% client satisfaction rate across fintech, health, and retail sectors",
+        icon: Users,
+      },
+      {
+        year: "2024",
+        title: "Strategic Partnerships Formed",
+        description: "Collaborated with 50+ industry leaders to strengthen service delivery and expand reach",
+        icon: Target,
+      },
+      {
+        year: "2025",
+        title: "50+ Successful Projects",
+        description: "Achieved over 50 digital transformations and product launches across Africa and beyond",
+        icon: Award,
+      },
+    ]
       
     return(
         <section className="px-6 lg:px-12 py-20 relative z-10">

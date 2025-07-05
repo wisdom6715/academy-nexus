@@ -27,27 +27,27 @@ const testimonials = [
     bgColor: "bg-pink-500"
   },
   {
-    name: "Ganiat Sule",
-    content: "I highly recommend Quantum Analytics to anyone looking to break into data science and analytics. The curriculum is cutting-edge, and the career support is outstanding.",
-    avatar: "/images/testimonial-4.jpg",
+    name: "Àràmídè",
+    content: "I really appreciate joining this great training🚀 because with this few days i joined,i have learnt a lot with the help of the recorded videos. All I could say is CodeShare Is the best 👍.",
+    avatar: "/images/testimonial-6.jpg",
     bgColor: "bg-indigo-500"
   },
   {
-    name: "Mildred Okunlade",
-    content: "I couldn't be happier with my experience at Quantum Analytics. The knowledge I gained here has opened doors to exciting opportunities in data science.",
-    avatar: "/images/testimonial-4.jpg",
+    name: "Fadeke",
+    content: "Ti ori eyan ba ku, o ma ji ninu code sphere. So explanatory, otipoju. Thanks to codesphere. I will love their assistance after the program sha",
+    avatar: "/images/testimonial-5.jpg",
     bgColor: "bg-teal-500"
   },
   {
-    name: "Samuel Umanava", 
-    content: "I went from knowing nothing about data analytics to being able to build complex models thanks to the comprehensive training at Quantum Analytics. It was a game-changer for my career.",
-    avatar: "/images/testimonial-4.jpg",
+    name: "Leemah", 
+    content: "It's a wonderful session sir And I most say I have been using an Excel for a while now but the theory part is what I haven't learn. Thank you so much for bringing this special package to everyone and I pray May Almighty Allah keep increasing the team in more knowledge and understanding 🤗 Thanks to the whole team I appreciate you all 🙏",
+    avatar: "/images/avatar.jpeg",
     bgColor: "bg-orange-500"
   },
   {
-    name: "Chukwujekwu Joseph",
-    content: "Quantum Analytics gave me the practical experience to feel confident in data analytics. The real-world projects were invaluable, and the mentorship was exceptional.",
-    avatar: "/images/testimonial-4.jpg",
+    name: "Emmanuel",
+    content: "On a lighter note. I will recommend this Academy over and over again. On all topics you take your time to attend to all questions and carry everyone along. This academy is rare, I bless the day we cross paths. Thank you Codesphere academy",
+    avatar: "/images/avatar.jpeg",
     bgColor: "bg-red-500"
   }
 ];

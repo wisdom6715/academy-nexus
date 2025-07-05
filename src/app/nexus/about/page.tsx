@@ -7,10 +7,10 @@ import {
 } from "lucide-react"
 import RegisterForm from "../components/RegistrationForm"
 import FooterSection from "../components/FooterComponent"
-import Timeline from "@/app/about/_components/Timeline"
+import Timeline from "../components/TimeLine"
 import TeamSection from "@/app/about/_components/TeamSection"
 import AboutValue from "@/app/nexus/components/AboutValue"
-import OurStory from "@/app/about/_components/OurStory"
+import OurStory from "../components/OurStory"
 
 export default function AboutTeam() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })

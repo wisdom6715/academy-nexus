@@ -49,76 +49,41 @@ export default function CareersPage() {
   const [selectedJob, setSelectedJob] = useState<number | null>(null)
 
   const jobs: Job[] = [
-    {
-      id: 1,
-      role: "Business Development Executive",
-      team: "Enterprise Sales",
-      office: "Lagos, Nigeria",
-      flag: "🇳🇬",
-      type: "Full-time",
-      salary: "₦2,500,000 - ₦4,000,000",
-      posted: "2 days ago",
-      description:
-        "We are seeking a dynamic Business Development Executive to drive growth in our enterprise sales division. You will be responsible for identifying new business opportunities, building relationships with key stakeholders, and contributing to our expansion across Nigeria.",
-      responsibilities: [
-        "Identify and pursue new business opportunities in the enterprise segment",
-        "Build and maintain relationships with key decision makers",
-        "Develop and execute strategic sales plans to achieve revenue targets",
-        "Collaborate with cross-functional teams to deliver comprehensive solutions",
-        "Conduct market research and competitive analysis",
-        "Prepare and deliver compelling presentations to prospective clients",
-      ],
-      requirements: [
-        "Bachelor's degree in Business, Marketing, or related field",
-        "3+ years of experience in business development or sales",
-        "Strong communication and presentation skills",
-        "Proven track record of meeting or exceeding sales targets",
-        "Experience in the financial services industry is preferred",
-        "Ability to work independently and as part of a team",
-      ],
-      benefits: [
-        "Competitive salary and performance bonuses",
-        "Health insurance coverage",
-        "Professional development opportunities",
-        "Flexible working arrangements",
-        "Annual leave and public holidays",
-      ],
-    },
-    {
-      id: 2,
-      role: "Business Relationship Manager (Anambra)",
-      team: "Enterprise Sales",
-      office: "Remote, Nigeria",
-      flag: "🇳🇬",
-      type: "Full-time",
-      salary: "₦1,800,000 - ₦2,800,000",
-      posted: "1 week ago",
-      description:
-        "Join our team as a Business Relationship Manager focused on the Anambra region. You will be responsible for managing client relationships, driving business growth, and ensuring customer satisfaction in this key market.",
-      responsibilities: [
-        "Manage and grow relationships with existing clients in Anambra region",
-        "Identify new business opportunities within the territory",
-        "Provide exceptional customer service and support",
-        "Conduct regular client visits and meetings",
-        "Collaborate with internal teams to resolve client issues",
-        "Prepare regular reports on territory performance",
-      ],
-      requirements: [
-        "Bachelor's degree in Business Administration or related field",
-        "2+ years of experience in relationship management or sales",
-        "Strong interpersonal and communication skills",
-        "Knowledge of Anambra market and local business environment",
-        "Ability to travel within the region as required",
-        "Proficiency in local languages is an advantage",
-      ],
-      benefits: [
-        "Competitive salary package",
-        "Remote work flexibility",
-        "Travel allowances",
-        "Health and life insurance",
-        "Career advancement opportunities",
-      ],
-    },
+    // {
+    //   id: 1,
+    //   role: "Business Development Executive",
+    //   team: "Enterprise Sales",
+    //   office: "Lagos, Nigeria",
+    //   flag: "🇳🇬",
+    //   type: "Full-time",
+    //   salary: "₦2,500,000 - ₦4,000,000",
+    //   posted: "2 days ago",
+    //   description:
+    //     "We are seeking a dynamic Business Development Executive to drive growth in our enterprise sales division. You will be responsible for identifying new business opportunities, building relationships with key stakeholders, and contributing to our expansion across Nigeria.",
+    //   responsibilities: [
+    //     "Identify and pursue new business opportunities in the enterprise segment",
+    //     "Build and maintain relationships with key decision makers",
+    //     "Develop and execute strategic sales plans to achieve revenue targets",
+    //     "Collaborate with cross-functional teams to deliver comprehensive solutions",
+    //     "Conduct market research and competitive analysis",
+    //     "Prepare and deliver compelling presentations to prospective clients",
+    //   ],
+    //   requirements: [
+    //     "Bachelor's degree in Business, Marketing, or related field",
+    //     "3+ years of experience in business development or sales",
+    //     "Strong communication and presentation skills",
+    //     "Proven track record of meeting or exceeding sales targets",
+    //     "Experience in the financial services industry is preferred",
+    //     "Ability to work independently and as part of a team",
+    //   ],
+    //   benefits: [
+    //     "Competitive salary and performance bonuses",
+    //     "Health insurance coverage",
+    //     "Professional development opportunities",
+    //     "Flexible working arrangements",
+    //     "Annual leave and public holidays",
+    //   ],
+    // }
   ]
 
   // Add additional job listings
@@ -235,10 +200,14 @@ export default function CareersPage() {
       {/* Job Details Modal */}
       {selectedJob && selectedJobDetails && (
         <div 
-          className="fixed inset-0 bg-gray-400 bg-opacity-70 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
           onClick={(e) => e.target === e.currentTarget && closeJobModal()}
         >
-          <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+          {/* Backdrop with opacity */}
+          <div className="absolute inset-0 bg-gray-900 opacity-50"></div>
+          
+          {/* Modal content without opacity */}
+          <div className="relative bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
             <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-center justify-between">
               <div>
                 <h2 className="text-2xl font-bold text-gray-900">{selectedJobDetails.role}</h2>
@@ -264,31 +233,6 @@ export default function CareersPage() {
             </div>
 
             <div className="p-6">
-              {/* Job Meta Info */}
-              <div className="grid md:grid-cols-3 gap-4 mb-8 p-4 bg-purple-50 rounded-lg">
-                <div className="flex items-center gap-2">
-                  <Clock className="w-5 h-5 text-purple-600" />
-                  <div>
-                    <div className="text-sm text-gray-600">Type</div>
-                    <div className="font-medium">{selectedJobDetails.type}</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <DollarSign className="w-5 h-5 text-purple-600" />
-                  <div>
-                    <div className="text-sm text-gray-600">Salary</div>
-                    <div className="font-medium">{selectedJobDetails.salary}</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-5 h-5 text-purple-600" />
-                  <div>
-                    <div className="text-sm text-gray-600">Posted</div>
-                    <div className="font-medium">{selectedJobDetails.posted}</div>
-                  </div>
-                </div>
-              </div>
-
               {/* Job Description */}
               <div className="mb-8">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">About This Role</h3>

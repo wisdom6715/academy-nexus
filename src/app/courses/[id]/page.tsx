@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { useParams } from "next/navigation"
-import { ArrowLeft, Calendar, Sparkles, BookOpen, TrendingUp, Star } from "lucide-react"
+import { ArrowLeft, Calendar, Dot, Sparkles, BookOpen, TrendingUp, Star } from "lucide-react"
 import CourseInfo from "@/app/lib/useCourseInformation"
 import HeaderComponent from "@/app/components/Header"
 import FooterSection from "@/app/components/FooterSection"
@@ -25,6 +25,7 @@ interface Course {
   features: string[]
   about: string
   outline: string[]
+  career: string[]
 }
 
 interface CourseData {
@@ -380,11 +381,11 @@ export default function BootcampCoursePage() {
                     </div>
 
                     <motion.button
-                      className="w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white py-4 rounded-xl font-bold shadow-lg hover:shadow-2xl hover:from-purple-700 hover:to-purple-800 transition-all"
+                      className="w-full bg-gradient-to-r cursor-pointer from-purple-600 to-purple-700 text-white py-4 rounded-xl font-bold shadow-lg hover:shadow-2xl hover:from-purple-700 hover:to-purple-800 transition-all"
                       whileHover={{ scale: 1.05, y: -2 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      Apply Now
+                      Enroll Now
                     </motion.button>
 
                     <motion.div
@@ -415,7 +416,7 @@ export default function BootcampCoursePage() {
       <section className="px-6 lg:px-12 py-8 relative z-10 flex flex-col md:flex-row max-w-7xl mx-auto">
           <div className="border-gray-200">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <nav className="flex flex-col space-x-8 ">
+              <nav className="flex flex-row md:flex-col space-x-8 ">
                 {[
                   { id: 'about', label: 'About', icon: BookOpen },
                   { id: 'topics', label: 'Outline', icon: TrendingUp },
@@ -450,6 +451,14 @@ export default function BootcampCoursePage() {
               <div className="text-gray-700 leading-relaxed whitespace-pre-line">
                 {course.about}
               </div>
+
+              <h2 className="text-3xl font-bold text-gray-900 mt-8 mb-3">Career Outcome</h2>
+              <div className="text-gray-700 leading-relaxed whitespace-pre-line">{course.career.map((career, index) => (
+                <div className="flex flex-row items-center">
+                  <Dot size={24}/>
+                  <p key={index}>{career}</p>
+                </div>
+              ))}</div>
             </motion.div>
           )}
 

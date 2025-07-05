@@ -5,35 +5,31 @@ export default function TeamSection(){
 
     const team = [
         {
-          name: "Sarah Chen",
+          name: "Oladosu Ibrahim",
           role: "Founder & CEO",
-          bio: "Former Google engineer with 10+ years building scalable systems. Passionate about making tech accessible to everyone.",
-          image: "/placeholder.svg?height=300&width=300",
-          companies: ["Google", "Meta", "Netflix"],
+          bio: "Certified Cloud/DevOps Engineer and Data Analyst with a finance background, blending tech skills with financial insight to deliver smart, data-driven solutions.",
+          image: "/images/ceo.jpg",
           gradient: "from-purple-500 to-purple-600",
         },
         {
-          name: "Marcus Johnson",
-          role: "Head of Curriculum",
-          bio: "Ex-Netflix architect who designed our industry-leading bootcamp curriculum. Expert in full-stack development.",
-          image: "/placeholder.svg?height=300&width=300",
-          companies: ["Netflix", "Uber", "Airbnb"],
+          name: "Subair Nurudeen Adewale",
+          role: "Founder and CTO",
+          bio: "Certified Cloud/DevOps Engineer and tech entrepreneur shaping future talent through practical, industry-ready training.",
+          image: "/images/avatar.jpeg",
           gradient: "from-purple-400 to-purple-500",
         },
         {
-          name: "Elena Rodriguez",
+          name: "Oladosu Ibrahim",
           role: "Director of Career Services",
           bio: "Former tech recruiter at Amazon. Helps our graduates land their dream jobs at top companies.",
-          image: "/placeholder.svg?height=300&width=300",
-          companies: ["Amazon", "Microsoft", "Spotify"],
+          image: "/images/avatar.jpeg",
           gradient: "from-purple-600 to-purple-700",
         },
         {
-          name: "David Kim",
+          name: "Oladosu Ibrahim",
           role: "Lead Instructor",
           bio: "Full-stack expert with 8+ years at startups and big tech. Makes complex concepts simple and fun.",
-          image: "/placeholder.svg?height=300&width=300",
-          companies: ["Stripe", "Shopify", "GitHub"],
+          image: "/images/avatar.jpeg",
           gradient: "from-purple-300 to-purple-400",
         },
     ]
@@ -128,22 +124,10 @@ export default function TeamSection(){
                   <motion.div className="relative mb-6" whileHover={{ scale: 1.05 }}>
                     <Image 
                       src={member.image || "/placeholder.svg"}
-                      width={24}
-                      height={24}
+                      width={250}
+                      height={250}
                       alt={member.name}
                       className="rounded-full object-cover mx-auto border-4 border-purple-100"
-                    />
-                    <motion.div
-                      className={`absolute inset-0 w-24 h-24 rounded-full bg-gradient-to-r ${member.gradient} opacity-20 mx-auto`}
-                      animate={{
-                        scale: [1, 1.1, 1],
-                        opacity: [0.2, 0.4, 0.2],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Number.POSITIVE_INFINITY,
-                        delay: index * 0.5,
-                      }}
                     />
                   </motion.div>
 
@@ -162,18 +146,6 @@ export default function TeamSection(){
                   </motion.div>
 
                   <p className="text-gray-600 text-sm leading-relaxed mb-4">{member.bio}</p>
-
-                  <div className="flex flex-wrap gap-2">
-                    {member.companies.map((company, companyIndex) => (
-                      <motion.span
-                        key={companyIndex}
-                        className="px-2 py-1 bg-purple-50 text-purple-600 rounded-full text-xs font-bold"
-                        whileHover={{ scale: 1.1, backgroundColor: "#f3e8ff" }}
-                      >
-                        {company}
-                      </motion.span>
-                    ))}
-                  </div>
                 </div>
               </motion.div>
             ))}
