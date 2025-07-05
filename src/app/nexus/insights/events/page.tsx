@@ -186,6 +186,7 @@ export default function CodeSphereEvents() {
                   src={featuredEvents[currentFeaturedIndex].image || "/placeholder.svg"}
                   alt={featuredEvents[currentFeaturedIndex].title}
                   className="w-full h-full object-cover"
+                  width={300} height={300}
                 />
                 <div className="absolute inset-0 bg-gradient-to-l from-transparent to-purple-600 lg:hidden"></div>
               </div>
@@ -283,6 +284,7 @@ export default function CodeSphereEvents() {
                   <Image
                     src={event.image || "/placeholder.svg"}
                     alt={event.title}
+                    width={300} height={300}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute top-4 left-4 flex gap-2">

@@ -15,7 +15,7 @@ export default function HeaderComponent(){
 
     return(
         <motion.nav
-            className="fixed left-0 right-0 z-50 p-6 lg:px-96"
+            className="fixed left-0 right-0 z-50 p-3 sm:p-4 lg:px-20 xl:px-44"
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{
